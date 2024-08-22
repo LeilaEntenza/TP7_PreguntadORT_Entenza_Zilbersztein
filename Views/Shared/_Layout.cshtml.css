@@ -7,15 +7,31 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-a {
-  color: #0077cc;
-}
-
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+header{
+  background-color: #CCCCCC;
+}
+
+
+header img{
+  margin-left: 3%;
+  width: 12%;
+}
+header ul li{
+  width: 22%;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+
+}
+
+
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
