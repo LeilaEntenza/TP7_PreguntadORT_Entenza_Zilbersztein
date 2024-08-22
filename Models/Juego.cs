@@ -14,18 +14,36 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             puntajeActual = 0;
             cantidadPreguntasCorrectas = 0;
         }
-        // static List<Categoria> ObtenerCategorias()
-        // {
-        //     //completar
-        // }
-        // static List<Categoria> ObtenerDificultades()
-        // {
-        //     //completar
-        // }
+        static List<Categorias> ObtenerCategorias()
+        {
+            return BD.ObtenerCategorias();
+        }
+        static List<Dificultades> ObtenerDificultades()
+        {
+            return BD.ObtenerDificultades();
+        }
         static void CargarPartida(string Username, int dificultad, int categoria)
         {
             username = Username;
-            //completar
+            preguntas = BD.ObtenerPreguntas(dificultad, categoria);
+            //no se ha utilizado el atributo respuestas
+        }
+        static Preguntas ObtenerProximaPregunta()
+        {
+            Random r = new Random();
+            int numero = r.Next(1,preguntas.Count);//no se incluye el último número
+            return preguntas[numero];
+        }
+        static bool VerificarRespuesta(int IdPregunta, int IdRespuesta)
+        {
+            bool esCorrecto = false;
+            respuestas = BD.ObtenerSiguientesRespuestas(IdPregunta);
+            int IdRespuestaCorrecta = BD.SeleccionarRespuestaCorrecta(IdPregunta, respuestas);
+            if (IdRespuestaCorrecta == IdRespuesta)
+            {
+                esCorrecto = true;
+            }
+            return esCorrecto;
         }
 
 
