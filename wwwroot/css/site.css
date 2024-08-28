@@ -9,22 +9,14 @@ h1{
   text-align: center;
 }
 
-
-.btn-primary {
-  background-color: #AAAA;
-  border: #AAAA;
-
+.btn btn-primary {
 
 }
-
-.btn-primary:active {
-  background-color: #AAAA;
-  box-shadow: none;
-  border: none;
+.centrar{
+  display: flex;
+  justify-content: center;
   
 }
-
-.btn-primary:hover {
-  background-color: #AAAA;
-  box-shadow: none;
+a{
+  margin: 3%;
 }
