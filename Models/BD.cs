@@ -12,7 +12,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
                 string sql = "select * from Categorias";
-                db.Query<Categorias>(sql).ToList();
+                categorias = db.Query<Categorias>(sql).ToList();
             }
             return categorias;
         }
