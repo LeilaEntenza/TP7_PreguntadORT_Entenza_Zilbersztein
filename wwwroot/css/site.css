@@ -2,21 +2,33 @@
 
 body {
   margin-bottom: 60px;
-  background-color: #ffffff;
+  background-color: #44518b;
 }
 
 h1{
   text-align: center;
 }
 
-.btn btn-primary {
+.index-button {  
+  width: 70%;
+  font-size: larger;
+  background-color: #ffffff00;
+  border-radius: 5px;
+  margin:10%;
+  border: #ffffff;
 
+
+}
+
+.index-button a{
+  text-decoration: none;
+  color: black;
 }
 .centrar{
   display: flex;
   justify-content: center;
   
 }
-a{
+main a{
   margin: 3%;
 }
