@@ -26,19 +26,13 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             }
             return dificultades;
         }
-        public static List<Preguntas> ObtenerPreguntas(int dificultad, int categoria)
+        public static List<Preguntas> ObtenerPreguntas(string dificultad, string categoria)
         {
             List<Preguntas> preguntas = new List<Preguntas>();
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql, where = "";
-                if (categoria != -1 && dificultad != -1)
-                    where = "where IdDificultad = @pdificultad and IdCategoria = @pcategoria";
-                else if (categoria != -1)
-                    where = "where IdCategoria = @pcategoria";
-                else if (dificultad != -1)
-                    where = "where IdDificultad = @pdificultad";
-                sql = $"select * from Preguntas p inner join Categorias c on p.IdCategoria = c.IdCategoria inner join Dificultades d on p.IdDificultad = d.IdDificultad {where}";
+                string sql;
+                sql = $"select * from Preguntas p inner join Categorias c on p.IdCategoria = c.IdCategoria inner join Dificultades d on p.IdDificultad = d.IdDificultad where IdDificultad COLLATE Latin1_General_CI_AI = @pdificultad";
                 db.Query<Preguntas>(sql).ToList();
             }
             return preguntas;

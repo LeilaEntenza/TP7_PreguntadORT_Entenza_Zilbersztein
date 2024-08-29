@@ -37,17 +37,21 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public IActionResult Comenzar(string username, int dificultad, int categoria) {
-        int cantPreguntas;
-        string ret;
-        Juego.CargarPartida(username, dificultad, categoria);
-        cantPreguntas=BD.ObtenerPreguntas(dificultad, categoria).Count;
-        if(cantPreguntas>0){
-            ret="Jugar";
-        }
-        else{
-            ret="ConfigurarJuego";
-        }
-        return View(ret);
+    public IActionResult Comenzar(string username) {
+        
+        
+        
+        // int cantPreguntas;
+        // string ret;
+        // int categoria = Juego.ObtenerCategoria();
+        // Juego.CargarPartida(username, dificultad);
+        // cantPreguntas=Juego.CargarPartida(dificultad).Count;
+        // if(cantPreguntas>0){
+        //     ret="Ruleta";
+        // }
+        // else{
+        //     ret="ConfigurarJuego";
+        // }
+        // return View(ret);
     }
 }

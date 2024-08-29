@@ -23,11 +23,23 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             return BD.ObtenerDificultades();
         }
-        public static void CargarPartida(string Username, int dificultad, int categoria)
+
+        public static void GuardarUsuario(string usuario)
+        {
+            username = usuario;
+        }
+        public static List<Preguntas> CargarPartida(string Username, int dificultad)
         {
             username = Username;
             preguntas = BD.ObtenerPreguntas(dificultad, categoria);
+            return preguntas;
             //no se ha utilizado el atributo respuestas
+        }
+        public static int ObtenerCategoria()
+        {
+            Random r = new Random();
+            int numero = r.Next(1,8);
+            return numero;
         }
         public static Preguntas ObtenerProximaPregunta()
         {
