@@ -1,8 +1,11 @@
 
 
-body {
+main {
   margin-bottom: 60px;
   background-color: #44518b;
+  display: grid;
+  height: 100%;
+  place-items: center;
 }
 
 h1{
@@ -13,16 +16,16 @@ h1{
   width: 70%;
   font-size: larger;
   background-color: #ffffff00;
+  color: white;
   border-radius: 5px;
   margin:10%;
-  border: #ffffff;
-
+  border: 1px solid #ffffff;
 
 }
 
 .index-button a{
   text-decoration: none;
-  color: black;
+  color: white;
 }
 .centrar{
   display: flex;
