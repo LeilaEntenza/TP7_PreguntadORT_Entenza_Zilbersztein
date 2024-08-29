@@ -6,6 +6,21 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
     {
         private static string _connectionString { get; set; } = @"Server=A-PHZ2-CIDI-19;DataBase=PreguntadORT;Trusted_Connection=true;";
 
+        //YA USADAS
+        public static Categorias ObtenerCategoria(int numero)
+        {
+            Categorias categoriaElegida;
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "select top 1 * from Categorias where IdCategoria = @pnumero";
+                categoriaElegida = db.QueryFirstOrDefault<Categorias>(sql, new {pnumero = numero});
+            }
+            return categoriaElegida;
+        }
+        
+        
+        //DE LA CONSIGNA
+        
         public static List<Categorias> ObtenerCategorias()
         {
             List<Categorias> categorias = new List<Categorias>();
@@ -26,19 +41,13 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             }
             return dificultades;
         }
-        public static List<Preguntas> ObtenerPreguntas(int dificultad, int categoria)
+        public static List<Preguntas> ObtenerPreguntas(string dificultad, string categoria)
         {
             List<Preguntas> preguntas = new List<Preguntas>();
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql, where = "";
-                if (categoria != -1 && dificultad != -1)
-                    where = "where IdDificultad = @pdificultad and IdCategoria = @pcategoria";
-                else if (categoria != -1)
-                    where = "where IdCategoria = @pcategoria";
-                else if (dificultad != -1)
-                    where = "where IdDificultad = @pdificultad";
-                sql = $"select * from Preguntas p inner join Categorias c on p.IdCategoria = c.IdCategoria inner join Dificultades d on p.IdDificultad = d.IdDificultad {where}";
+                string sql;
+                sql = $"select * from Preguntas p inner join Categorias c on p.IdCategoria = c.IdCategoria inner join Dificultades d on p.IdDificultad = d.IdDificultad where IdDificultad COLLATE Latin1_General_CI_AI = @pdificultad";
                 db.Query<Preguntas>(sql).ToList();
             }
             return preguntas;
@@ -52,17 +61,6 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
                 respuestasPregunta = db.Query<Respuestas>(sql, new {pidpregunta = IdPregunta}).ToList();
             }
             return respuestasPregunta;
-        }
-        public static int SeleccionarRespuestaCorrecta(int IdPregunta, List<Respuestas> respuestas)
-        {
-            int contador = 0;
-            bool encontrado = false;
-            do{
-                contador++;
-                if (respuestas[contador].Correcta)
-                encontrado = true;
-            }while(contador <= respuestas.Count && !encontrado);
-            return contador;
         }
 
     }
