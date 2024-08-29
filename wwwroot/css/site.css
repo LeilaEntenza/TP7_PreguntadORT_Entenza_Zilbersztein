@@ -1,8 +1,18 @@
 
 
-body {
+*{
+  margin: 0 auto;
+  padding: 0 auto;
+  box-sizing: border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+main {
   margin-bottom: 60px;
   background-color: #44518b;
+  display: grid;
+  height: 100%;
+  place-items: center;
 }
 
 h1{
@@ -13,16 +23,16 @@ h1{
   width: 70%;
   font-size: larger;
   background-color: #ffffff00;
+  color: white;
   border-radius: 5px;
   margin:10%;
-  border: #ffffff;
-
+  border: 1px solid #ffffff;
 
 }
 
 .index-button a{
   text-decoration: none;
-  color: black;
+  color: white;
 }
 .centrar{
   display: flex;
@@ -31,4 +41,86 @@ h1{
 }
 main a{
   margin: 3%;
+}
+
+.bodyruleta{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height:100vh;
+}
+.bodyruleta .container{
+  position:relative;
+  width:400px;
+  height:400px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.bodyruleta .container .spinBtn{
+  position:absolute;
+  width:60px;
+  height:60px;
+  background:#ffffff;
+  border-radius:50%;
+  z-index:10;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  color:black;
+  letter-spacing: 0.1em;
+  border: 4px solid rgba(0,0,0,0.75);
+  cursor:pointer; 
+  user-select:none;
+}
+.bodyruleta .container .spinBtn::before{
+  content: '';
+  position:absolute;
+  width:20px;
+  height:30px;
+  background:white;
+  top:-30px;
+  clip-path: polygon(50% 0%, 15% 100%, 85% 100%);
+
+}
+.bodyruleta .container .wheel{
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:100%;
+  background:gray;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px gray, 0 0 0 15px white, 0 0 0 18px black;
+  overflow:hidden;
+  transition: transform 5s ease-in-out;
+}
+.bodyruleta .container .wheel .number{
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background: var(--clr);
+  transform-origin: bottom right;
+  transform: rotate(calc(45deg*var(--i)));
+  clip-path: polygon(0 0, 56% 0, 100% 100%, 0 56%);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.bodyruleta .container .wheel .number span{
+  position:relative;
+  transform:rotate(45deg);
+  font-size:2em;
+  font-weight:700;
+  color:white;
+  text-shadow:3px 5px 2px rgba(0,0,0,0.15);
+}
+.bodyruleta .container .wheel .number span::after{
+  content: '$';
+  position: absolute;
+  font-size:0.75em;
+  font-weight:500;
 }

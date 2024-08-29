@@ -6,6 +6,21 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
     {
         private static string _connectionString { get; set; } = @"Server=A-PHZ2-CIDI-19;DataBase=PreguntadORT;Trusted_Connection=true;";
 
+        //YA USADAS
+        public static Categorias ObtenerCategoria(int numero)
+        {
+            Categorias categoriaElegida;
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "select top 1 * from Categorias where IdCategoria = @pnumero";
+                categoriaElegida = db.QueryFirstOrDefault<Categorias>(sql, new {pnumero = numero});
+            }
+            return categoriaElegida;
+        }
+        
+        
+        //DE LA CONSIGNA
+        
         public static List<Categorias> ObtenerCategorias()
         {
             List<Categorias> categorias = new List<Categorias>();
@@ -46,17 +61,6 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
                 respuestasPregunta = db.Query<Respuestas>(sql, new {pidpregunta = IdPregunta}).ToList();
             }
             return respuestasPregunta;
-        }
-        public static int SeleccionarRespuestaCorrecta(int IdPregunta, List<Respuestas> respuestas)
-        {
-            int contador = 0;
-            bool encontrado = false;
-            do{
-                contador++;
-                if (respuestas[contador].Correcta)
-                encontrado = true;
-            }while(contador <= respuestas.Count && !encontrado);
-            return contador;
         }
 
     }

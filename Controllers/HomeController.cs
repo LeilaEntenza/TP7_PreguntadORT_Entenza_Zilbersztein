@@ -19,17 +19,33 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Ruleta()
+    {
+        return View();
+    }
+    public IActionResult Comenzar(string username) 
+    {
+        Juego.GuardarUsuario(username);
+        ViewBag.categoria = Juego.ObtenerCategoria();
+        return View("ruleta");
+    }
+    public IActionResult ConfigurarJuego(string categoria, string dificultad)
+    {
+        ViewBag.pregunta = Juego.CargarPregunta(dificultad, categoria);
+        return View("mostrarcategoria");
+    }
+
     public IActionResult Privacy()
     {
         return View();
     }
-    public IActionResult configurarJuego()
-    {
-        Juego.InicializarJuego();
-        ViewBag.categoria = Juego.ObtenerCategorias();
-        ViewBag.dificultad = Juego.ObtenerDificultades();
-        return View();
-    }
+    // public IActionResult configurarJuego()
+    // {
+    //     Juego.InicializarJuego();
+    //     ViewBag.categoria = Juego.ObtenerCategorias();
+    //     ViewBag.dificultad = Juego.ObtenerDificultades();
+    //     return View();
+    // }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
@@ -37,21 +53,6 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public IActionResult Comenzar(string username) {
-        
-        
-        
-        // int cantPreguntas;
-        // string ret;
-        // int categoria = Juego.ObtenerCategoria();
-        // Juego.CargarPartida(username, dificultad);
-        // cantPreguntas=Juego.CargarPartida(dificultad).Count;
-        // if(cantPreguntas>0){
-        //     ret="Ruleta";
-        // }
-        // else{
-        //     ret="ConfigurarJuego";
-        // }
-        // return View(ret);
-    }
+    
+
 }

@@ -1,4 +1,8 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿let wheel = document.querySelector('.wheel');
+        let spinBtn = document.querySelector('.spinBtn');
+        let value = Math.ceil(Math.random() * 3600);
+        
+        spinBtn.onclick = function(){
+            wheel.style.transform = "rotate(" + value + "deg)";
+            value += Math.ceil(Math.random() * 3600);
+        }

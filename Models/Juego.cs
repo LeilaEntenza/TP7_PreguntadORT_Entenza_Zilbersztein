@@ -6,7 +6,8 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         private static int puntajeActual { get; set; }
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
-        private static List<Preguntas> preguntas = new List<Preguntas>();
+        private static Categorias categoriaElegida{get;set;}
+        private static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
 
         public static void InicializarJuego()
@@ -28,36 +29,38 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             username = usuario;
         }
-        public static List<Preguntas> CargarPartida(string Username, int dificultad)
+        public static Preguntas CargarPregunta(string dificultad, string categoria)
         {
-            username = Username;
-            preguntas = BD.ObtenerPreguntas(dificultad, categoria);
-            return preguntas;
+            List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultad, categoria);
+            Random r = new Random();
+            int numeroPregunta = r.Next(1, preguntas.Count);
+            return preguntas[numeroPregunta];
             //no se ha utilizado el atributo respuestas
         }
-        public static int ObtenerCategoria()
+        public static Categorias ObtenerCategoria()
         {
             Random r = new Random();
             int numero = r.Next(1,8);
-            return numero;
+            categoriaElegida = BD.ObtenerCategoria(numero);
+            return categoriaElegida;
         }
-        public static Preguntas ObtenerProximaPregunta()
+
+        public static int SeleccionarRespuestaCorrecta(int IdPregunta, List<Respuestas> respuestas)
         {
-            Random r = new Random();
-            int numero = r.Next(1, preguntas.Count);//no se incluye el último número
-            while (preguntasUtilizadas.IndexOf(numero) != -1)
-            {
-                numero = r.Next(1, preguntas.Count);
-            }
-            preguntasUtilizadas.Add(numero);
-            preguntasUtilizadas.Sort();
-            return preguntas[numero];
+            int contador = 0;
+            bool encontrado = false;
+            do{
+                contador++;
+                if (respuestas[contador].Correcta)
+                encontrado = true;
+            }while(contador <= respuestas.Count && !encontrado);
+            return contador;
         }
         public static bool VerificarRespuesta(int IdPregunta, int IdRespuesta)
         {
             bool esCorrecto = false;
             respuestas = BD.ObtenerSiguientesRespuestas(IdPregunta);
-            int IdRespuestaCorrecta = BD.SeleccionarRespuestaCorrecta(IdPregunta, respuestas);
+            int IdRespuestaCorrecta = SeleccionarRespuestaCorrecta(IdPregunta, respuestas);
             if (IdRespuestaCorrecta == IdRespuesta)
             {
                 esCorrecto = true;//sumar puntos
