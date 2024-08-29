@@ -1,11 +1,8 @@
 
 
-main {
+body {
   margin-bottom: 60px;
   background-color: #44518b;
-  display: grid;
-  height: 100%;
-  place-items: center;
 }
 
 h1{
@@ -26,6 +23,7 @@ h1{
 .index-button a{
   text-decoration: none;
   color: white;
+
 }
 .centrar{
   display: flex;
@@ -34,4 +32,48 @@ h1{
 }
 main a{
   margin: 3%;
+}
+
+.tarjetaPregunta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d3d3d3;
+  border-radius: 5px;
+}
+
+.button-preg{
+  background-color: #ffffff;
+  width: fit-content;
+  margin-bottom: 100%;
+  border-radius: 5px; 
+}
+.button-preg:hover{
+  background-color: #44518b2b;
+}
+
+p{
+  font-size: large;
+  color: white;
+}
+
+.tarjetaPregunta p{
+  color: black;
+}
+
+h1{
+  font-size: 100px;
+}
+
+main a{
+  text-decoration: none;
+  font-size: large;
+  color: white;
+  font-size: larger;
+  width: 100%;
+}
+
+main a:hover{
+  color: white;
+  font-size: larger;
 }

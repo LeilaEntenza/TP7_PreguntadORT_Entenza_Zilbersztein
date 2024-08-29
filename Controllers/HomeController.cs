@@ -50,4 +50,10 @@ public class HomeController : Controller
         }
         return View(ret);
     }
+    public IActionResult Jugar(){
+        return View("juego");
+    }
+        public IActionResult Respuesta(){
+        return View("Respuesta");
+    }
 }

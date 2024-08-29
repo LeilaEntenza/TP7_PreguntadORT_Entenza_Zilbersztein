@@ -6,26 +6,13 @@
 
 <p>Nombre: @ViewBag.Nombre</p>
 <p>Puntaje actual: @ViewBag.Puntaje</p>
-<div class="tarjetaPregunta">
-    <h3>Pregunta #(num)</h3>
-    <form action='@Url.Action("VerificarRespuesta", "Home")'>
-        <div class="Opciones">
-            <div class="Titulo-form">¿Quien es Perón?</div>
-            <label for="" class="opcion-1">
-            <div class="dot"></div>
-            <div class="text">Peron</div>
-            </label>
-
-            <label for="" class="opcion-2">
-            <div class="dot"></div>
-            <div class="text">Perla</div>
-            </label>
-
-
-            <label for="" class="opcion-3">
-            <div class="dot"></div>
-            <div class="text">a</div>
-            </label>
-        </div>
+<div class="tarjetaPregunta">        
+    <h3>Pregunta numero 1</h3>
+    <p>¿Qué es la vida?</p>
+    <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
+    <input class="button-preg" type="submit" value="1" name="1"> <br>
+    <input class="button-preg" type="submit" value="2" name="2"> <br>
+    <input class="button-preg" type="submit" value="3" name="3"> <br>
+    <input class="button-preg" type="submit" value="4" name="4"> <br>
     </form>
 </div>
