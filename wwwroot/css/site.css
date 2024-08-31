@@ -1,8 +1,4 @@
 
-
-<<<<<<< HEAD
-body {
-=======
 *{
   margin: 0 auto;
   padding: 0 auto;
@@ -11,7 +7,6 @@ body {
 }
 
 main {
->>>>>>> 1fddb1266f9b7aa433ca4b244b3eea91542a0e2b
   margin-bottom: 60px;
   background-color: #44518b;
 }
@@ -45,7 +40,6 @@ main a{
   margin: 3%;
 }
 
-<<<<<<< HEAD
 .tarjetaPregunta {
   display: flex;
   flex-direction: column;
@@ -88,7 +82,8 @@ main a{
 main a:hover{
   color: white;
   font-size: larger;
-=======
+}
+
 .bodyruleta{
   display:flex;
   justify-content: center;
@@ -169,5 +164,4 @@ main a:hover{
   position: absolute;
   font-size:0.75em;
   font-weight:500;
->>>>>>> 1fddb1266f9b7aa433ca4b244b3eea91542a0e2b
 }
