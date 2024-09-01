@@ -122,31 +122,31 @@ main a:hover {
 }
 
 .seccion:nth-child(1) {
-  transform: rotate(0deg) skewY(-30deg);
+  transform: rotate(29deg) skewY(-30deg);
 }
 
 .seccion:nth-child(2) {
-  transform: rotate(54.42deg) skewY(-30deg);
+  transform: rotate(83.42deg) skewY(-30deg);
 }
 
 .seccion:nth-child(3) {
-  transform: rotate(102.85deg) skewY(-30deg);
+  transform: rotate(131.85deg) skewY(-30deg);
 }
 
 .seccion:nth-child(4) {
-  transform: rotate(154.28deg) skewY(-30deg);
+  transform: rotate(183.28deg) skewY(-30deg);
 }
 
 .seccion:nth-child(5) {
-  transform: rotate(205.71deg) skewY(-30deg);
+  transform: rotate(234.71deg) skewY(-30deg);
 }
 
 .seccion:nth-child(6) {
-  transform: rotate(251.14deg) skewY(-30deg);
+  transform: rotate(280.14deg) skewY(-30deg);
 }
 
 .seccion:nth-child(7) {
-  transform: rotate(300.57deg) skewY(-30deg);
+  transform: rotate(329.57deg) skewY(-30deg);
 }
 
 .icono {
@@ -173,4 +173,15 @@ main a:hover {
   align-items: center;
   font-weight: bold;
   cursor: pointer;
+}
+.flecha {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  top: -30px; /* Ajusta según sea necesario */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
