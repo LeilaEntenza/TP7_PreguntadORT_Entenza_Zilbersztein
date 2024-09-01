@@ -9,6 +9,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         private static Categorias categoriaElegida{get;set;}
         private static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
+        public static int SeccionElegida{get;set;}
 
         public static void InicializarJuego()
         {

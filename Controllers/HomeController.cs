@@ -23,6 +23,14 @@ public class HomeController : Controller
     {
         return View();
     }
+    [HttpPost]
+    public IActionResult RecibirCategoria([FromBody] int categoriaElegida)
+    {
+        Juego.SeccionElegida = categoriaElegida;
+        ViewBag.categoria = categoriaElegida;
+        Thread.Sleep(2000);
+        return Json(new { redirectTo = Url.Action("Index", "Home") });
+    }
     public IActionResult Comenzar(string username) 
     {
         Juego.GuardarUsuario(username);

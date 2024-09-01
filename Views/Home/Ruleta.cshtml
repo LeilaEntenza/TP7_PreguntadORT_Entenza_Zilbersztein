@@ -1,28 +1,69 @@
 @{
-    ViewData["Title"]="Categoría";
+    ViewData["Title"] = "Categoría";
 }
 
-<div class="bodyruleta">
+@* <div class="bodyruleta">
 
-    <div class="container">
-        <div class="spinBtn">Girar</div>
-        <div class="wheel">
-            <div class="number" style="--i:1;--clr:#db7093">
-            <span>20</span></div>
-            <div class="number" style="--i:2;--clr:#20b2aa">
-            <span>10</span></div>
-            <div class="number" style="--i:3;--clr:#d63e92">
-            <span>20</span></div>
-            <div class="number" style="--i:4;--clr:#ffffff">
-            <span>1000</span></div>
-            <div class="number" style="--i:5;--clr:#daa520">
-            <span>1000</span></div>
-            <div class="number" style="--i:6;--clr:#ff340f">
-            <span>1000</span></div>
-            <div class="number" style="--i:7;--clr:#ff7f50">
-            <span>1000</span></div>
-            <div class="number" style="--i:8;--clr:#4169e1">
-            <span>1000</span></div>
+<div class="container">
+<div class="spinBtn">Girar</div>
+<div class="wheel">
+<div class="number" style="--i:1;--clr:#db7093">
+<span>20</span>
+</div>
+<div class="number" style="--i:2;--clr:#20b2aa">
+<span>10</span>
+</div>
+<div class="number" style="--i:3;--clr:#d63e92">
+<span>20</span>
+</div>
+<div class="number" style="--i:4;--clr:#ffffff">
+<span>1000</span>
+</div>
+<div class="number" style="--i:5;--clr:#daa520">
+<span>1000</span>
+</div>
+<div class="number" style="--i:6;--clr:#ff340f">
+<span>1000</span>
+</div>
+<div class="number" style="--i:7;--clr:#ff7f50">
+<span>1000</span>
+</div>
+<div class="number" style="--i:8;--clr:#4169e1">
+<span>1000</span>
+</div>
+</div>
+</div>
+</div> *@
+
+@ViewBag.categoria
+
+<form Action='@Url.Action("RecibirCategoria, Home")' method="post">
+    <div class="bodyruleta2">
+        <div id="ruleta" class="ruleta">
+            <div class="seccion" style="background-color: #00A3E0;">
+                <img src="ruta/a/icono_geografia.png" class="icono">
+            </div>
+            <div class="seccion" style="background-color: #00C389;">
+                <img src="ruta/a/icono_ciencia.png" class="icono">
+            </div>
+            <div class="seccion" style="background-color: #FFDC00;">
+                <img src="/images/iconohistoria.png" class="icono">
+            </div>
+            <div class="seccion" style="background-color: #FF0000;">
+                <img src="ruta/a/icono_arte.png" class="icono">
+            </div>
+            <div class="seccion" style="background-color: #FF66CC;">
+                <img src="ruta/a/icono_entretenimiento.png" class="icono">
+            </div>
+            <div class="seccion" style="background-color: #FF6600;">
+                <img src="ruta/a/icono_deportes.png" class="icono">
+            </div>
+            <div class="seccion" style="background-color: #ffffff;">
+                <img src="ruta/a/icono_deportes.png" class="icono">
+            </div>
+            <div class="boton-centro" onclick="girar()">
+                GIRAR
+            </div>
         </div>
     </div>
-</div>
+</form>
