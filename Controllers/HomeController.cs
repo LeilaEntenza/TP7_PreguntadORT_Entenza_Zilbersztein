@@ -29,9 +29,10 @@ public class HomeController : Controller
         Juego.SeccionElegida = categoriaElegida;
         ViewBag.categoria = categoriaElegida;
         Thread.Sleep(1000);
-        return Json(new { redirectTo = Url.Action("index", "Home") });
+        
+        return Json(new { redirectTo = Url.Action("mostrarcategoriaelegida", "Home") });
     }
-    public IActionResult Comenzar(string username) 
+    public IActionResult Comenzar(string username)
     {
         Juego.GuardarUsuario(username);
         ViewBag.categoria = Juego.ObtenerCategoria();
