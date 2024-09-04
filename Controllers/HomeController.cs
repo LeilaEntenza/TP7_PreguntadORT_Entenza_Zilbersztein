@@ -28,8 +28,8 @@ public class HomeController : Controller
     {
         Juego.SeccionElegida = categoriaElegida;
         ViewBag.categoria = categoriaElegida;
-        Thread.Sleep(2000);
-        return Json(new { redirectTo = Url.Action("Index", "Home") });
+        Thread.Sleep(1000);
+        return Json(new { redirectTo = Url.Action("index", "Home") });
     }
     public IActionResult Comenzar(string username) 
     {

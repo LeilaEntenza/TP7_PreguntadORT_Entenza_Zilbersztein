@@ -1,17 +1,17 @@
 ﻿function girar() {
     var ruleta = document.getElementById("ruleta");
-    var grados = Math.floor(Math.random() * 360) + 1440; // Asegura al menos 4 vueltas completas
+    var grados = Math.floor(Math.random() * 360) + 1440;
     ruleta.style.transition = "transform 4s ease-out";
     ruleta.style.transform = `rotate(${grados}deg)`;
 
     setTimeout(function () {
-        ruleta.style.transition = "none"; // Eliminar transición para el siguiente giro
-        var degActual = grados % 360; // Obtener el ángulo actual después de que se detenga
-        ruleta.style.transform = `rotate(${degActual}deg)`; // Ajustar la posición final
+        ruleta.style.transition = "none"; 
+        var degActual = grados % 360; 
+        ruleta.style.transform = `rotate(${degActual}deg)`;
 
-        // Calcular la sección seleccionada
-        var seccionSeleccionada = Math.floor(degActual / 51,42857142857); // Cada sección ocupa 60 grados
-        // Llamar a la función para enviar el resultado
+        
+        var seccionSeleccionada = Math.floor(degActual / 51,42857142857); 
+        
         enviarResultado(seccionSeleccionada);
 
     }, 4000);
@@ -25,10 +25,10 @@ function enviarResultado(seccionSeleccionada) {
         },
         body: JSON.stringify({ categoriaElegida: seccionSeleccionada })
     })
-    .then(response => response.json())  // Convertir la respuesta a JSON
+    .then(response => response.json()) 
     .then(data => {
         if (data.redirectTo) {
-            window.location.href = data.redirectTo;  // Redirige a la URL proporcionada
+            window.location.href = data.redirectTo; 
         }
     })
     .catch(error => {
@@ -39,7 +39,7 @@ function enviarResultado(seccionSeleccionada) {
 
 
 
-//RULETA 2:
+
 
 
 
