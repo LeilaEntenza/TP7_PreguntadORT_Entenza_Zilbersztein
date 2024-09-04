@@ -2,17 +2,21 @@
   margin: 0 auto;
   padding: 0 auto;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Mikado', sans-serif;
   outline: none;
 }
 
 body{
   font-family: mikado;
+  background-size: cover;  
+  background-color: #5d37ae;
 }
 
 main {
   margin-bottom: 60px;
-  background-color: #44518b;
+
+  
+  width: 100%;
 }
 
 h1 {
