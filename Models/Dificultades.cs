@@ -2,7 +2,17 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
 {
     public class Dificultades
     {
-        private int IdDificultad { get; set; }
-        private string Nombre { get; set; }
+        public int IdDificultad { get; set; }
+        public string Nombre { get; set; }
+        public Dificultades()
+        {
+            
+        }
+        
+        public Dificultades(int idDificultad, string nombre)
+        {
+            IdDificultad = idDificultad;
+            Nombre = nombre;
+        }
     }
 }
