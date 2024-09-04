@@ -4,7 +4,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
 {
     public static class BD
     {
-        private static string _connectionString { get; set; } = @"Server=A-NHFY-INFO-12;DataBase=PreguntadORT;Trusted_Connection=true;";
+        private static string _connectionString { get; set; } = @"Server=A-PHZ2-CIDI-19;DataBase=PreguntadORT;Trusted_Connection=true;";
 
         //YA USADAS
         public static Categorias ObtenerCategoria(int numero)
@@ -41,18 +41,18 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             }
             return dificultades;
         }
-        public static List<Preguntas> ObtenerPreguntas(string dificultad, string categoria)
+        public static List<Preguntas> ObtenerPreguntas(int dificultad, int categoria)
         {
             List<Preguntas> preguntas = new List<Preguntas>();
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
                 string sql;
-                sql = $"select * from Preguntas p inner join Categorias c on p.IdCategoria = c.IdCategoria inner join Dificultades d on p.IdDificultad = d.IdDificultad where IdDificultad COLLATE Latin1_General_CI_AI = @pdificultad";
-                db.Query<Preguntas>(sql).ToList();
+                sql = $"select * from Preguntas p inner join Categorias c on p.IdCategoria = c.IdCategoria inner join Dificultades d on p.IdDificultad = d.IdDificultad where d.IdDificultad = @pdificultad AND c.idCategoria = @pcategoria";
+                preguntas = db.Query<Preguntas>(sql, new {pdificultad = dificultad, pcategoria = categoria}).ToList();
             }
             return preguntas;
         }
-        public static List<Respuestas> ObtenerSiguientesRespuestas(int IdPregunta)
+        public static List<Respuestas> ObtenerRespuestas(int IdPregunta)
         {
             List<Respuestas> respuestasPregunta = new List<Respuestas>();
             using (SqlConnection db = new SqlConnection(_connectionString))

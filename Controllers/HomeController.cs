@@ -18,29 +18,38 @@ public class HomeController : Controller
         ViewBag.categorias = Juego.ObtenerCategorias();
         return View();
     }
-
+    public IActionResult ConfigurarJuego()
+    {
+        Juego.InicializarJuego();
+        return View();
+    }
     public IActionResult Ruleta()
     {
         return View();
+    }
+    public IActionResult Comenzar(string username)
+    {
+        Juego.GuardarUsuario(username);
+        ViewBag.categoria = Juego.ObtenerCategoria();
+        return View("ruleta");
     }
     [HttpPost]
     public IActionResult RecibirCategoria([FromBody] int categoriaElegida)
     {
         ViewBag.categoriaElegida = Juego.GuardarCategoria(categoriaElegida);
         Thread.Sleep(1000);
-        return Json(new { redirectTo = Url.Action("privacy", "Home") });
+        return Json(new { redirectTo = Url.Action("pregunta", "Home") });
     }
-    public IActionResult Comenzar(string username)
-    {   
-        Juego.GuardarUsuario(username);
-        ViewBag.categoria = Juego.ObtenerCategoria();
-        return View("ruleta");
-    }
-    public IActionResult ConfigurarJuego()
+
+    public IActionResult Pregunta()
     {
-        Juego.InicializarJuego();
-        return View();
+        Preguntas preguntaElegida = Juego.CargarPregunta();
+        List<Respuestas> opciones = Juego.CargarRespuestas();
+        ViewBag.preguntaElegida = preguntaElegida;
+        ViewBag.opciones = opciones;
+        return View("pregunta");
     }
+
 
     public IActionResult Privacy()
     {
@@ -52,10 +61,12 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-    public IActionResult Jugar(){
+    public IActionResult Jugar()
+    {
         return View("juego");
     }
-        public IActionResult Respuesta(){
+    public IActionResult Respuesta()
+    {
         return View("Respuesta");
     }
 }

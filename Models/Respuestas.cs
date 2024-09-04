@@ -5,7 +5,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         private int IdRespuesta { get; set; }
         private int IdPregunta { get; set; }
         private int Opcion { get; set; }
-        private string Contenido { get; set; }
+        public string Contenido { get; set; }
         public bool Correcta { get; set; }
         private string Foto { get; set; }
     }

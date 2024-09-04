@@ -2,7 +2,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
 {
     public class Categorias
     {
-        private int IdCategoria { get; set; }
+        public int IdCategoria { get; set; }
         public string Nombre { get; set; }
         public string Foto { get; set; }
         
