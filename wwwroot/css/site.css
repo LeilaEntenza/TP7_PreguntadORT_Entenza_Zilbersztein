@@ -6,6 +6,10 @@
   outline: none;
 }
 
+body{
+  font-family: mikado;
+}
+
 main {
   margin-bottom: 60px;
   background-color: #44518b;
@@ -184,4 +188,9 @@ main a:hover {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+}
+
+.seccion img{
+  max-width: 100%;
+  object-fit: contain;
 }
