@@ -30,6 +30,7 @@ function enviarResultado(seccionSeleccionada) {
         if (data.redirectTo) {
             window.location.href = data.redirectTo; 
         }
+
     })
     .catch(error => {
         console.error('Error al enviar la solicitud:', error);

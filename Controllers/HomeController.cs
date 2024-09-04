@@ -26,14 +26,12 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult RecibirCategoria([FromBody] int categoriaElegida)
     {
-        Juego.SeccionElegida = categoriaElegida;
-        ViewBag.categoria = categoriaElegida;
+        ViewBag.categoriaElegida = Juego.GuardarCategoria(categoriaElegida);
         Thread.Sleep(1000);
-        
-        return Json(new { redirectTo = Url.Action("mostrarcategoriaelegida", "Home") });
+        return Json(new { redirectTo = Url.Action("privacy", "Home") });
     }
     public IActionResult Comenzar(string username)
-    {
+    {   
         Juego.GuardarUsuario(username);
         ViewBag.categoria = Juego.ObtenerCategoria();
         return View("ruleta");

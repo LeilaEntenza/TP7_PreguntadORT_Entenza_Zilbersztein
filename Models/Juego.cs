@@ -6,7 +6,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         private static int puntajeActual { get; set; }
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
-        private static Categorias categoriaElegida{get;set;}
+        private static Categorias categoriaElegida{get;set;} = new Categorias();
         private static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
         public static int SeccionElegida{get;set;}
@@ -45,7 +45,11 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             categoriaElegida = BD.ObtenerCategoria(numero);
             return categoriaElegida;
         }
-
+        public static Categorias GuardarCategoria(int categoria)
+        {
+            categoriaElegida = BD.ObtenerCategoria(categoria);
+            return categoriaElegida;
+        }
         public static int SeleccionarRespuestaCorrecta(int IdPregunta, List<Respuestas> respuestas)
         {
             int contador = 0;
