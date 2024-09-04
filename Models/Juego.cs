@@ -34,11 +34,11 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static Preguntas CargarPregunta()
         {
             dificultadElegida.IdDificultad = 1;
-            categoriaElegida.IdCategoria = 1;
+            categoriaElegida.IdCategoria = 1; //ESTO SE DEBE CAMBIAR
             List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
-            pregunta = preguntas[0];
+            pregunta = preguntas[numeroPregunta-1];
             return pregunta;
             //no se ha utilizado el atributo respuestas
         }
