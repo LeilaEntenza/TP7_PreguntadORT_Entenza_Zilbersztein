@@ -8,7 +8,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
         private static Categorias categoriaElegida{get;set;} = new Categorias();
         private static Dificultades dificultadElegida{get;set;} = new Dificultades();
-        private static Preguntas pregunta = new Preguntas();
+        public static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
         public static int SeccionElegida{get;set;}
 
@@ -34,13 +34,12 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static Preguntas CargarPregunta()
         {
             dificultadElegida.IdDificultad = 1;
-            categoriaElegida.IdCategoria = 1; //ESTO SE DEBE CAMBIAR
+            categoriaElegida.IdCategoria = 1;
             List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
             pregunta = preguntas[numeroPregunta-1];
             return pregunta;
-            //no se ha utilizado el atributo respuestas
         }
         public static List<Respuestas> CargarRespuestas()
         {
