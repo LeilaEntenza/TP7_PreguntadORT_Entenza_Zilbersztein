@@ -1,13 +1,13 @@
 ﻿function girar() {
     var ruleta = document.getElementById("ruleta");
-    var grados = Math.floor(Math.random() * 360) + 1440; // Asegura al menos 4 vueltas completas
+    var grados = Math.floor(Math.random() * 360) + 1440;
     ruleta.style.transition = "transform 4s ease-out";
     ruleta.style.transform = `rotate(${grados}deg)`;
 
     setTimeout(function () {
-        ruleta.style.transition = "none"; // Eliminar transición para el siguiente giro
-        var degActual = grados % 360; // Obtener el ángulo actual después de que se detenga
-        ruleta.style.transform = `rotate(${degActual}deg)`; // Ajustar la posición final
+        ruleta.style.transition = "none"; 
+        var degActual = grados % 360; 
+        ruleta.style.transform = `rotate(${degActual}deg)`;
 
         // Calcular la sección seleccionada
         let seccionSeleccionada;
@@ -44,7 +44,7 @@ function enviarResultado(seccionSeleccionada) {
 
 
 
-//RULETA 2:
+
 
 
 

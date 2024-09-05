@@ -6,7 +6,8 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         private static int puntajeActual { get; set; }
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
-        private static Categorias categoriaElegida{get;set;}
+        private static Categorias categoriaElegida{get;set;} = new Categorias();
+        private static Dificultades dificultadElegida{get;set;} = new Dificultades();
         private static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
         public static int SeccionElegida{get;set;}
@@ -30,13 +31,22 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             username = usuario;
         }
-        public static Preguntas CargarPregunta(string dificultad, string categoria)
+        public static Preguntas CargarPregunta()
         {
-            List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultad, categoria);
+            dificultadElegida.IdDificultad = 1;
+            categoriaElegida.IdCategoria = 1; //ESTO SE DEBE CAMBIAR
+            List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
-            return preguntas[numeroPregunta];
+            pregunta = preguntas[numeroPregunta-1];
+            return pregunta;
             //no se ha utilizado el atributo respuestas
+        }
+        public static List<Respuestas> CargarRespuestas()
+        {
+            int idPregunta = pregunta.IdPregunta;
+            List<Respuestas> opciones = BD.ObtenerRespuestas(idPregunta);
+            return opciones;
         }
         public static Categorias ObtenerCategoria()
         {
@@ -45,7 +55,11 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             categoriaElegida = BD.ObtenerCategoria(numero);
             return categoriaElegida;
         }
-
+        public static Categorias GuardarCategoria(int categoria)
+        {
+            categoriaElegida = BD.ObtenerCategoria(categoria);
+            return categoriaElegida;
+        }
         public static int SeleccionarRespuestaCorrecta(int IdPregunta, List<Respuestas> respuestas)
         {
             int contador = 0;
@@ -60,7 +74,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static bool VerificarRespuesta(int IdPregunta, int IdRespuesta)
         {
             bool esCorrecto = false;
-            respuestas = BD.ObtenerSiguientesRespuestas(IdPregunta);
+            respuestas = BD.ObtenerRespuestas(IdPregunta);
             int IdRespuestaCorrecta = SeleccionarRespuestaCorrecta(IdPregunta, respuestas);
             if (IdRespuestaCorrecta == IdRespuesta)
             {

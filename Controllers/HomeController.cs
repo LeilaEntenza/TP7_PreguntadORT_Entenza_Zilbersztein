@@ -18,7 +18,11 @@ public class HomeController : Controller
         ViewBag.categorias = Juego.ObtenerCategorias();
         return View();
     }
-
+    public IActionResult ConfigurarJuego()
+    {
+        Juego.InicializarJuego();
+        return View();
+    }
     public IActionResult Ruleta()
     {
         return View();
@@ -43,11 +47,16 @@ public class HomeController : Controller
         ViewBag.categoria = Juego.ObtenerCategoria();
         return View("ruleta");
     }
-    public IActionResult ConfigurarJuego()
+
+    public IActionResult Pregunta()
     {
-        Juego.InicializarJuego();
-        return View();
+        Preguntas preguntaElegida = Juego.CargarPregunta();
+        List<Respuestas> opciones = Juego.CargarRespuestas();
+        ViewBag.preguntaElegida = preguntaElegida;
+        ViewBag.opciones = opciones;
+        return View("pregunta");
     }
+
 
     public IActionResult Privacy()
     {
