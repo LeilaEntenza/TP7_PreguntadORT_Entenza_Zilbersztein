@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Pregunta";
+    <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
+    }
+
+<p>@ViewBag.preguntaElegida.Enunciado</p>
+
+@foreach (Respuestas r in ViewBag.opciones)
+{
+    <p>@r.Contenido</p>
+}
