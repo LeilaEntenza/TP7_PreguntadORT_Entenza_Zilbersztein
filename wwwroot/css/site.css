@@ -42,8 +42,14 @@ h1 {
 
 .centrar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 
+}
+
+.centrarYAgrandar {
+
+  display: table-cell;
 }
 
 main a {
@@ -197,4 +203,12 @@ main a:hover {
 .seccion img{
   max-width: 100%;
   object-fit: contain;
+}
+
+.preguntas{
+  width: 10%;
+}
+
+.formNombre{
+  size-adjust: 50%;
 }
