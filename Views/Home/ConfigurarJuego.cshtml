@@ -4,8 +4,13 @@
 }
 <div class="centrarYAgrandar">
 <h2>Bienvenido a PreguntadORT, por favor ingrese su nombre:</h2>
-<form action='@Url.Action("Comenzar", "Home")'>
+<br>
+  <form action='@Url.Action("Comenzar", "Home")'>
+    <div class="centrar">
     <input type="text" name="Nombre"  placeholder="Nombre" required>
-    <input type="submit" name="Enviar">
+    </div>   <br> 
+    <div class="centrar">
+    <input class="button-enviar" type="submit" name="Enviar">
+    </div>
 </form>
 </div>
