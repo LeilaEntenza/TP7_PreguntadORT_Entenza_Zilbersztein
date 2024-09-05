@@ -1,7 +1,11 @@
-el usuario escribe su nombre
-
+@{
+    ViewData["Title"]="Iniciar sesión";
+    <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
+}
+<div class="centrarYAgrandar">
+<h2>Bienvenido a PreguntadORT, por favor ingrese su nombre:</h2>
 <form action='@Url.Action("Comenzar", "Home")'>
-    <input type="text" name="Nombre" required>
+    <input type="text" name="Nombre"  placeholder="Nombre" required>
     <input type="submit" name="Enviar">
-
 </form>
+</div>
