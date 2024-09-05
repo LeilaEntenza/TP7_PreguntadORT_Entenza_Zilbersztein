@@ -28,6 +28,16 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             }
             return numeroRespuestaCorrecta;
         }
+        public static string ObtenerColor(int seccionElegida)
+        {
+            Categorias categoria = new Categorias();
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "select * from Categorias where IdCategoria = @pseccionelegida";
+                categoria = db.QueryFirstOrDefault<Categorias>(sql, new {pseccionelegida = seccionElegida});
+            }
+            return categoria.Color;
+        }
         
         //DE LA CONSIGNA
         

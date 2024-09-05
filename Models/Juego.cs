@@ -2,7 +2,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
 {
     static public class Juego
     {
-        private static string username { get; set; }
+        public static string username { get; set; }
         private static int puntajeActual { get; set; }
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
@@ -34,10 +34,17 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             username = usuario;
         }
+        public static string TraerUsuario()
+        {
+            return username;
+        }
+        public static int TraerPuntaje()
+        {
+            return puntajeActual;
+        }
         public static Preguntas CargarPregunta()
         {
             dificultadElegida.IdDificultad = 1;
-            categoriaElegida.IdCategoria = 1;//para probar
             List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
@@ -54,6 +61,17 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             categoriaElegida = BD.ObtenerCategoria(categoria);
             return categoriaElegida;
+        }
+        public static string ObtenerColor()
+        {
+            string color;
+            color = BD.ObtenerColor(SeccionElegida);
+            color = "background-color: " + color;
+            return color;
+        }
+        public static string ObtenerEnunciado()
+        {
+            return pregunta.Enunciado; 
         }
         public static int SeleccionarRespuestaCorrecta()
         {

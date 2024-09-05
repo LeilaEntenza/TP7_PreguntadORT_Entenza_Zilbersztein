@@ -27,20 +27,19 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Comenzar(string username)
+    {
+        Juego.GuardarUsuario(username);
+        return View("ruleta");
+    }
     [HttpPost]
     public IActionResult RecibirCategoria(int categoriaElegida)
     {
         Juego.SeccionElegida = categoriaElegida;
         Juego.GuardarCategoria(categoriaElegida);
-        ViewBag.categoria = categoriaElegida;
-        Thread.Sleep(2000);
+        Thread.Sleep(1500);
         var redirectUrl = Url.Action("Pregunta", "Home");
         return Json(new { redirectUrl });
-    }
-    public IActionResult Comenzar(string username)
-    {
-        Juego.GuardarUsuario(username);
-        return View("ruleta");
     }
     public IActionResult Pregunta()
     {
@@ -50,8 +49,10 @@ public class HomeController : Controller
     public IActionResult mostrarPregunta()
     {
         List<Respuestas> opciones = Juego.CargarRespuestas();
-        ViewBag.preguntaElegida = Juego.pregunta;
         ViewBag.opciones = opciones;
+        ViewBag.colorFondo = Juego.ObtenerColor();
+        ViewBag.Categoria = Juego.GuardarCategoria(Juego.SeccionElegida).Nombre;
+        ViewBag.Puntaje = Juego.TraerPuntaje();
         return View();
     }
     public IActionResult SeleccionarRespuestaCorrecta(int respuesta)
