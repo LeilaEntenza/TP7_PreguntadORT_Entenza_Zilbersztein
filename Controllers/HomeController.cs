@@ -24,14 +24,20 @@ public class HomeController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult RecibirCategoria([FromBody] int categoriaElegida)
+    public IActionResult RecibirCategoria(int categoriaElegida)
     {
         Juego.SeccionElegida = categoriaElegida;
         ViewBag.categoria = categoriaElegida;
         Thread.Sleep(2000);
-        return Json(new { redirectTo = Url.Action("Index", "Home") });
+        var redirectUrl = Url.Action("hola", "Home", new { categoriaElegida = categoriaElegida });
+        return Json(new { redirectUrl });
     }
-    public IActionResult Comenzar(string username) 
+    public IActionResult hola(int categoriaElegida)
+    {
+        ViewBag.categoria = categoriaElegida;
+        return View("hola");
+    }
+    public IActionResult Comenzar(string username)
     {
         Juego.GuardarUsuario(username);
         ViewBag.categoria = Juego.ObtenerCategoria();
@@ -53,10 +59,12 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-    public IActionResult Jugar(){
+    public IActionResult Jugar()
+    {
         return View("juego");
     }
-        public IActionResult Respuesta(){
+    public IActionResult Respuesta()
+    {
         return View("Respuesta");
     }
 }

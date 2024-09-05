@@ -10,7 +10,8 @@
         ruleta.style.transform = `rotate(${degActual}deg)`; // Ajustar la posición final
 
         // Calcular la sección seleccionada
-        var seccionSeleccionada = Math.floor(degActual / 51,42857142857); // Cada sección ocupa 60 grados
+        let seccionSeleccionada;
+        seccionSeleccionada = Math.floor(degActual / 51, 42857142857); // Cada sección ocupa 60 grados
         // Llamar a la función para enviar el resultado
         enviarResultado(seccionSeleccionada);
 
@@ -18,22 +19,26 @@
 }
 
 function enviarResultado(seccionSeleccionada) {
-    fetch('/Home/RecibirCategoria', {
+    console.log(seccionSeleccionada);
+    fetch(`/Home/RecibirCategoria?categoriaElegida=${seccionSeleccionada}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ categoriaElegida: seccionSeleccionada })
+        }
     })
-    .then(response => response.json())  // Convertir la respuesta a JSON
+    .then(response => response.json())
     .then(data => {
-        if (data.redirectTo) {
-            window.location.href = data.redirectTo;  // Redirige a la URL proporcionada
+        if (data.redirectUrl) {
+            // Redirige a la URL proporcionada por el servidor
+            window.location.href = data.redirectUrl;
+        } else {
+            console.error('No se recibió URL de redireccionamiento');
         }
     })
     .catch(error => {
         console.error('Error al enviar la solicitud:', error);
     });
+
 }
 
 
