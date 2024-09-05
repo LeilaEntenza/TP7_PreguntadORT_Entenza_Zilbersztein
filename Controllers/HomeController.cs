@@ -15,7 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        ViewBag.categorias = Juego.ObtenerCategorias();
+        Juego.InicializarJuego();
         return View();
     }
     public IActionResult ConfigurarJuego()
@@ -40,7 +40,6 @@ public class HomeController : Controller
     public IActionResult Comenzar(string username)
     {
         Juego.GuardarUsuario(username);
-        ViewBag.categoria = Juego.ObtenerCategoria();
         return View("ruleta");
     }
     public IActionResult Pregunta()
@@ -54,6 +53,13 @@ public class HomeController : Controller
         ViewBag.preguntaElegida = Juego.pregunta;
         ViewBag.opciones = opciones;
         return View();
+    }
+    public IActionResult SeleccionarRespuestaCorrecta(int respuesta)
+    {
+        Juego.SeleccionarRespuestaCorrecta();
+        bool esCorrecto = Juego.VerificarRespuesta(respuesta);
+        ViewBag.esCorrecto = esCorrecto;
+        return View("respuesta");
     }
     public IActionResult Privacy()
     {

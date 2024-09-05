@@ -18,6 +18,16 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             return categoriaElegida;
         }
         
+        public static int ObtenerRespuestaCorrecta(int idPregunta)
+        {
+            int numeroRespuestaCorrecta;
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "select top 1 Opcion from Respuestas where IdPregunta = @pidpregunta AND Correcta = 1";
+                numeroRespuestaCorrecta = db.QueryFirstOrDefault(sql, new {pidpregunta = idPregunta});
+            }
+            return numeroRespuestaCorrecta;
+        }
         
         //DE LA CONSIGNA
         

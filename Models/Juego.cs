@@ -11,12 +11,15 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
         public static int SeccionElegida{get;set;}
+        public static int numeroRespuestaCorrecta{get;set;}
 
         public static void InicializarJuego()
         {
             username = "";
             puntajeActual = 0;
             cantidadPreguntasCorrectas = 0;
+            pregunta = null;
+            numeroRespuestaCorrecta = 0;
         }
         public static List<Categorias> ObtenerCategorias()
         {
@@ -34,7 +37,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static Preguntas CargarPregunta()
         {
             dificultadElegida.IdDificultad = 1;
-            categoriaElegida.IdCategoria = 1;
+            categoriaElegida.IdCategoria = 1;//para probar
             List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
@@ -47,38 +50,21 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             List<Respuestas> opciones = BD.ObtenerRespuestas(idPregunta);
             return opciones;
         }
-        public static Categorias ObtenerCategoria()
-        {
-            Random r = new Random();
-            int numero = r.Next(1,8);
-            categoriaElegida = BD.ObtenerCategoria(numero);
-            return categoriaElegida;
-        }
         public static Categorias GuardarCategoria(int categoria)
         {
             categoriaElegida = BD.ObtenerCategoria(categoria);
             return categoriaElegida;
         }
-        public static int SeleccionarRespuestaCorrecta(int IdPregunta, List<Respuestas> respuestas)
+        public static int SeleccionarRespuestaCorrecta()
         {
-            int contador = 0;
-            bool encontrado = false;
-            do{
-                contador++;
-                if (respuestas[contador].Correcta)
-                encontrado = true;
-            }while(contador <= respuestas.Count && !encontrado);
-            return contador;
+            numeroRespuestaCorrecta = BD.ObtenerRespuestaCorrecta(pregunta.IdPregunta);
+            return numeroRespuestaCorrecta;
         }
-        public static bool VerificarRespuesta(int IdPregunta, int IdRespuesta)
+        public static bool VerificarRespuesta(int respuesta)
         {
             bool esCorrecto = false;
-            respuestas = BD.ObtenerRespuestas(IdPregunta);
-            int IdRespuestaCorrecta = SeleccionarRespuestaCorrecta(IdPregunta, respuestas);
-            if (IdRespuestaCorrecta == IdRespuesta)
-            {
-                esCorrecto = true;//sumar puntos
-            }
+            if (respuesta == numeroRespuestaCorrecta)
+            esCorrecto = true;           
             return esCorrecto;
         }
 
