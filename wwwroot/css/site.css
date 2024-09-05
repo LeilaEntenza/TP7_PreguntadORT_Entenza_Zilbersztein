@@ -34,6 +34,15 @@ h1 {
 
 }
 
+.button-enviar{
+  width: 70%;
+  font-size: larger;
+  background-color: #ffffff00;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+}
+
 .index-button a {
   text-decoration: none;
   color: white;
@@ -42,14 +51,17 @@ h1 {
 
 .centrar {
   display: flex;
-  flex-direction: column;
   justify-content: center;
 
 }
 
 .centrarYAgrandar {
-
-  display: table-cell;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 30%;
+  width: 50%;
+  margin: -15% 0 0 -25%;
 }
 
 main a {
@@ -104,21 +116,19 @@ main a:hover {
 
 /* RULETA 2*/
 .bodyruleta2 {
-  background-color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 70vh;
   margin: 0;
 }
 
 .ruleta {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-  border: 5px solid #CCCCCC;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -211,4 +221,8 @@ main a:hover {
 
 .formNombre{
   size-adjust: 50%;
+}
+
+h2{
+  text-align: center;
 }
