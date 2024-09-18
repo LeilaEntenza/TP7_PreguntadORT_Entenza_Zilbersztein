@@ -228,3 +228,14 @@ main a:hover {
 h2{
   text-align: center;
 }
+
+.Ruleta{
+  
+}
+
+.girar{
+  width: 13%;
+  margin-top: -53%;
+  margin-left: 43%;
+  position: relative;
+}
