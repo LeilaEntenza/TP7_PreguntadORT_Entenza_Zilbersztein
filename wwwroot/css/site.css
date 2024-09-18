@@ -14,8 +14,6 @@ body{
 
 main {
   margin-bottom: 60px;
-
-  
   width: 100%;
 }
 
@@ -27,9 +25,9 @@ h1 {
   width: 70%;
   font-size: larger;
   background-color: #ffffff00;
-  color: white;
+  color: #d8d8d8;
   border-radius: 5px;
-  margin: 10%;
+  margin: 5%;
   border: 1px solid #ffffff;
 
 }
@@ -38,23 +36,20 @@ h1 {
   width: 70%;
   font-size: larger;
   background-color: #ffffff00;
-  color: white;
+  color: #ffffff;
   border-radius: 5px;
   border: 1px solid #ffffff;
 }
 
 .index-button a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
 
 } 
 
 .centrar {
   display: flex;
   justify-content: center;
-
-
-  
 }
 
 .centrarYAgrandar {
@@ -74,15 +69,18 @@ main a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d3d3d3;
+  background-color: #189786;
   border-radius: 5px;
+  margin: 2%;
 }
 
 .button-preg {
   background-color: #ffffff;
   width: fit-content;
-  margin-bottom: 100%;
   border-radius: 5px;
+  border-color: #18978600;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .button-preg:hover {
@@ -91,15 +89,20 @@ main a {
 
 p {
   font-size: large;
-  color: white;
+  color: #d8d8d8;
 }
 
 .tarjetaPregunta p {
-  color: black;
+  color: #d8d8d8;
 }
 
 h1 {
   font-size: 100px;
+  color: #d8d8d8;
+}
+
+h3{
+  color: #d8d8d8;
 }
 
 main a {
@@ -201,13 +204,21 @@ h2{
   text-align: center;
 }
 
-.Ruleta{
-  
-}
-
 .girar{
   width: 13%;
   margin-top: -53%;
   margin-left: 43%;
   position: relative;
+}
+
+.PersonajeRuleta{
+  width: 20%;
+  margin-top: -53%;
+  margin-left: 80%;
+}
+
+.PersonajeRuleta2{
+  width: 20%;
+  margin-top: -65%;
+  margin-left: 1%;
 }

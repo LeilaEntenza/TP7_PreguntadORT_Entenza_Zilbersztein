@@ -85,4 +85,7 @@ public class HomeController : Controller
     public IActionResult arte(){
         return View("arte");
     }
+    public IActionResult Creditos(){
+        return View("creditos");
+    }
 }
