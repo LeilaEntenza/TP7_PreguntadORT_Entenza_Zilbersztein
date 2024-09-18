@@ -42,7 +42,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
-            pregunta = preguntas[numeroPregunta-1];
+            pregunta = preguntas[0];
             return pregunta;
         }
         public static List<Respuestas> CargarRespuestas()

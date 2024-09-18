@@ -36,7 +36,7 @@ public class HomeController : Controller
     public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida)
     {
         Juego.GuardarCategoria(categoriaElegida);
-        /*Juego.GuardarDificultad(dificultadElegida);*/
+        Juego.GuardarDificultad(dificultadElegida);
         Thread.Sleep(1000);
         var redirectUrl = Url.Action("Pregunta", "Home");
         return Json(new { redirectUrl });
@@ -87,5 +87,11 @@ public class HomeController : Controller
     }
     public IActionResult Creditos(){
         return View("creditos");
+    }
+
+    [HttpPost]
+    public IActionResult MostrarUnaVista(){
+        var redirectUrl = Url.Action("Index", "Home");
+        return Json(new { redirectUrl });
     }
 }

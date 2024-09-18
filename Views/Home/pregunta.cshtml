@@ -1,25 +1,25 @@
 @{
-    ViewData["Title"]="¡Pregunta!";
+    ViewData["Title"] = "¡Pregunta!";
     <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
 }
 
 
 <body style="@ViewBag.colorFondo;">
-
-<h1>@ViewBag.Categoria</h1>
-<div class="centrar">
-<img src="@ViewBag.direccionImagen" class="preguntas">
-</div>
-<p>Nombre: @ViewBag.Nombre</p>
-<p>Puntaje actual: @ViewBag.Puntaje</p>
-<p>@ViewBag.preguntaEnunciado</p>
-<div class="tarjetaPregunta">
-    <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
-    <input class="button-preg" type="submit" value="1" name="1"> <br>
-    <input class="button-preg" type="submit" value="2" name="2"> <br>
-    <input class="button-preg" type="submit" value="3" name="3"> <br>
-    <input class="button-preg" type="submit" value="4" name="4"> <br>
-    </form>
-</div>
+<div id="temporizador">Tiempo restante: <span id="tiempo">10</span> segundos</div>
+    <h1>@ViewBag.Categoria</h1>
+    <div class="centrar">
+        <img src="@ViewBag.direccionImagen" class="preguntas">
+    </div>
+    <p>Nombre: @ViewBag.Nombre</p>
+    <p>Puntaje actual: @ViewBag.Puntaje</p>
+    <p>@ViewBag.preguntaEnunciado</p>
+    <div class="tarjetaPregunta">
+        <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
+            @foreach (Respuestas r in @ViewBag.opciones)
+            {
+                <input class="button-preg" type="submit" name="respuesta" value="@r.Opcion">@r.Contenido<br>
+            }
+        </form>
+    </div>
 
 </body>
