@@ -6,7 +6,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         private static int puntajeActual { get; set; }
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
-        private static Categorias categoriaElegida{get;set;} = new Categorias();
+        public static Categorias categoriaElegida{get;set;} = new Categorias();
         private static Dificultades dificultadElegida{get;set;} = new Dificultades();
         public static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
@@ -18,7 +18,6 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             username = "";
             puntajeActual = 0;
             cantidadPreguntasCorrectas = 0;
-            pregunta = null;
             numeroRespuestaCorrecta = 0;
         }
         public static List<Categorias> ObtenerCategorias()
@@ -39,7 +38,8 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         }
         public static Preguntas CargarPregunta()
         {
-            List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
+            List<Preguntas> preguntas = new List<Preguntas>();
+            preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
             pregunta = preguntas[numeroPregunta-1];
@@ -53,7 +53,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         }
         public static Categorias GuardarCategoria(int categoria)
         {
-            categoriaElegida = BD.ObtenerCategoria(categoria);
+            categoriaElegida = BD.ObtenerCategoria(6);
             return categoriaElegida;
         }
         public static void GuardarDificultad(int dificultad)
@@ -63,7 +63,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static string ObtenerColor()
         {
             string color;
-            color = BD.ObtenerColor(SeccionElegida);
+            color = BD.ObtenerColor(categoriaElegida.IdCategoria);
             color = "background-color: " + color;
             return color;
         }

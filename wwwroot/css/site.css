@@ -184,34 +184,6 @@ main a:hover {
   transform: translate(-50%, -50%);
 }
 
-.boton-centro {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  border-radius: 50%;
-  border: 3px solid #999;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  cursor: pointer;
-}
-.flecha {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  position: absolute;
-  top: -30px; /* Ajusta según sea necesario */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
 .seccion img{
   max-width: 100%;
   object-fit: contain;

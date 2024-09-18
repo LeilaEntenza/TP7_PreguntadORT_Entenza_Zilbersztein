@@ -36,8 +36,8 @@ public class HomeController : Controller
     public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida)
     {
         Juego.GuardarCategoria(categoriaElegida);
-        Juego.GuardarDificultad(dificultadElegida);
-        Thread.Sleep(1500);
+        /*Juego.GuardarDificultad(dificultadElegida);*/
+        Thread.Sleep(1000);
         var redirectUrl = Url.Action("Pregunta", "Home");
         return Json(new { redirectUrl });
     }
@@ -53,7 +53,9 @@ public class HomeController : Controller
         ViewBag.colorFondo = Juego.ObtenerColor();
         ViewBag.Categoria = Juego.GuardarCategoria(Juego.SeccionElegida).Nombre;
         ViewBag.Puntaje = Juego.TraerPuntaje();
-        return View();
+        ViewBag.preguntaEnunciado = Juego.pregunta.Enunciado;
+        ViewBag.direccionImagen = "/images/" + ViewBag.Categoria + ".png";
+        return View("pregunta");
     }
     public IActionResult SeleccionarRespuestaCorrecta(int respuesta)
     {

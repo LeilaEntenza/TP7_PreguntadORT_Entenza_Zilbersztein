@@ -1,25 +1,19 @@
-<!-- <p>@ViewBag.preguntaElegida.Enunciado</p>
-
-@foreach (Respuestas r in ViewBag.opciones)
-{
-    <p>@r.Contenido</p>
-} -->
-
 @{
     ViewData["Title"]="¡Pregunta!";
-    string color = "background-color: red";
     <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
 }
-<body style="@color";>
+
+
+<body style="@ViewBag.colorFondo;">
+
 <h1>@ViewBag.Categoria</h1>
 <div class="centrar">
-<img src="categoria"+@ViewBag.NumCategoria>
+<img src="@ViewBag.direccionImagen" class="preguntas">
 </div>
 <p>Nombre: @ViewBag.Nombre</p>
 <p>Puntaje actual: @ViewBag.Puntaje</p>
-<div class="tarjetaPregunta">        
-    <h3>Pregunta numero 1</h3>
-    <p>¿Qué es la vida?</p>
+<div class="tarjetaPregunta">    
+    <p>@ViewBag.preguntaEnunciado</p>
     <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
     <input class="button-preg" type="submit" value="1" name="1"> <br>
     <input class="button-preg" type="submit" value="2" name="2"> <br>
@@ -27,4 +21,5 @@
     <input class="button-preg" type="submit" value="4" name="4"> <br>
     </form>
 </div>
- </body>
+
+</body>

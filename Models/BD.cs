@@ -68,7 +68,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             {
                 string sql;
                 sql = $"select * from Preguntas p inner join Categorias c on p.IdCategoria = c.IdCategoria inner join Dificultades d on p.IdDificultad = d.IdDificultad where d.IdDificultad = @pdificultad AND c.idCategoria = @pcategoria";
-                preguntas = db.Query<Preguntas>(sql, new {pdificultad = dificultad, pcategoria = categoria}).ToList();
+                preguntas = db.Query<Preguntas>(sql, new {pdificultad = 1, pcategoria = categoria}).ToList();
             }
             return preguntas;
         }

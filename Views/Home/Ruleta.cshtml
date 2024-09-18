@@ -6,14 +6,16 @@
 @ViewBag.categoria
 <form Action='@Url.Action("RecibirCategoria", "Home")' method="post">
     <div class="bodyruleta2">
-        <div id="ruleta" class="ruleta" onclick="girar()">
+        <div id="ruleta" class="ruleta">
         <img class="Ruleta" src="/images/RuletaMejorada.png">
         </div>    
     </div> 
     <div onclick="girar()">
-    <img id="girar" class="girar" src="/images/girar.png" >
+        <img id="girar" class="girar" src="/images/girar.png">
     </div>
-    <input type="radio" name="Dificultad" value="1" required checked>Fácil
-    <input type="radio" name="Dificultad" value="2" required>Normal
-    <input type="radio" name="Dificultad" value="3" required>Difícil
+    <div>
+        <input type="radio" name="dificultadElegida" value="1" required checked>Fácil
+        <input type="radio" name="dificultadElegida" value="2" required>Normal
+        <input type="radio" name="dificultadElegida" value="3" required>Difícil
+    </div>
 </form>
