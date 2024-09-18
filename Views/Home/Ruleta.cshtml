@@ -1,12 +1,16 @@
 @{
     ViewData["Title"] = "Categoría";
+    <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
 }
 
 @ViewBag.categoria
 <form Action='@Url.Action("RecibirCategoria", "Home")' method="post">
     <div class="bodyruleta2">
         <div id="ruleta" class="ruleta" onclick="girar()">
-        <img src="/images/RuletaMejorada.png">
-        </div>
+        <img class="Ruleta" src="/images/RuletaMejorada.png">
+        </div>    
+    </div> 
+    <div onclick="girar()">
+    <img id="girar" class="girar" src="/images/girar.png" >
     </div>
 </form>
