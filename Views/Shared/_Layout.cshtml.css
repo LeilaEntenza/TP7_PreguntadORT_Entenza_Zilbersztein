@@ -13,13 +13,13 @@ a.navbar-brand {
   border-color: #1861ac;
 }
 header{
-  background-color: #CCCCCC;
+  background-color: #189786;
 }
 
 
 header img{
-  margin-left: 3%;
-  width: 12%;
+  margin-left: 10%;
+  width: 13%;
 }
 header ul li{
   width: 22%;
@@ -55,10 +55,4 @@ button.accept-policy {
   line-height: inherit;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
+

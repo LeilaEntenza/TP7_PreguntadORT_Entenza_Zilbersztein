@@ -53,7 +53,7 @@ public class HomeController : Controller
         ViewBag.colorFondo = Juego.ObtenerColor();
         ViewBag.Categoria = Juego.GuardarCategoria(Juego.SeccionElegida).Nombre;
         ViewBag.Puntaje = Juego.TraerPuntaje();
-        return View();
+        return View("pregunta");
     }
     public IActionResult SeleccionarRespuestaCorrecta(int respuesta)
     {
@@ -82,5 +82,8 @@ public class HomeController : Controller
     }
     public IActionResult arte(){
         return View("arte");
+    }
+    public IActionResult Creditos(){
+        return View("creditos");
     }
 }

@@ -4,17 +4,20 @@
 }
 <h1>Arte</h1>
 <div class="centrar">
-<img src="/images/categoria4.png" class="preguntas">
+<img src="/images/arte.png" class="preguntas">
 </div>
 <p>Nombre: @ViewBag.Nombre</p>
 <p>Puntaje actual: @ViewBag.Puntaje</p>
-<div class="tarjetaPregunta">        
-    <h3>Pregunta numero 1</h3>
+<div class="tarjetaPregunta">
+    <h3>Pregunta numero @ViewBag.NumPregunta</h3>
     <p>¿Qué es la vida?</p>
+</div>
+<div class="tarjetaPregunta">        
     <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
     <input class="button-preg" type="submit" value="1" name="1"> <br>
     <input class="button-preg" type="submit" value="2" name="2"> <br>
     <input class="button-preg" type="submit" value="3" name="3"> <br>
     <input class="button-preg" type="submit" value="4" name="4"> <br>
     </form>
+    <!-- Conectar preg a la bd -->
 </div>
