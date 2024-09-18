@@ -35,10 +35,6 @@ function enviarResultado(seccionSeleccionada) {
             console.error('No se recibió URL de redireccionamiento');
         }
     })
-    .catch(error => {
-        console.error('Error al enviar la solicitud:', error);
-    });
-
 }
 
 

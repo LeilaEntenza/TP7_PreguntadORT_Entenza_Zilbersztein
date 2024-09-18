@@ -51,13 +51,13 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             }
             return categorias;
         }
-        public static List<Dificultades> ObtenerDificultades()
+        public static Dificultades ObtenerDificultad(int idDificultad)
         {
-            List<Dificultades> dificultades = new List<Dificultades>();
+            Dificultades dificultades = new Dificultades();
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "select * from Dificultades";
-                db.Query<Dificultades>(sql).ToList();
+                string sql = "select * from Dificultades where idDificultad = @piddificultad";
+                db.QueryFirstOrDefault<Dificultades>(sql, new {piddificultad = idDificultad});
             }
             return dificultades;
         }

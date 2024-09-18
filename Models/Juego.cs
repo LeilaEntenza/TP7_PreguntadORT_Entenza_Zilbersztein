@@ -25,11 +25,6 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             return BD.ObtenerCategorias();
         }
-        public static List<Dificultades> ObtenerDificultades()
-        {
-            return BD.ObtenerDificultades();
-        }
-
         public static void GuardarUsuario(string usuario)
         {
             username = usuario;
@@ -44,7 +39,6 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         }
         public static Preguntas CargarPregunta()
         {
-            dificultadElegida.IdDificultad = 1;
             List<Preguntas> preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
@@ -61,6 +55,10 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             categoriaElegida = BD.ObtenerCategoria(categoria);
             return categoriaElegida;
+        }
+        public static void GuardarDificultad(int dificultad)
+        {
+            dificultadElegida = BD.ObtenerDificultad(dificultad);
         }
         public static string ObtenerColor()
         {

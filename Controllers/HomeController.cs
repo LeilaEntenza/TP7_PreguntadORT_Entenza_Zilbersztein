@@ -33,10 +33,10 @@ public class HomeController : Controller
         return View("ruleta");
     }
     [HttpPost]
-    public IActionResult RecibirCategoria(int categoriaElegida)
+    public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida)
     {
-        Juego.SeccionElegida = categoriaElegida;
         Juego.GuardarCategoria(categoriaElegida);
+        Juego.GuardarDificultad(dificultadElegida);
         Thread.Sleep(1500);
         var redirectUrl = Url.Action("Pregunta", "Home");
         return Json(new { redirectUrl });
