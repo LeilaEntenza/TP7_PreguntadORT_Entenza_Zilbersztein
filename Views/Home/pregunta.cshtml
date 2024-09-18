@@ -12,8 +12,8 @@
 </div>
 <p>Nombre: @ViewBag.Nombre</p>
 <p>Puntaje actual: @ViewBag.Puntaje</p>
-<div class="tarjetaPregunta">    
-    <p>@ViewBag.preguntaEnunciado</p>
+<p>@ViewBag.preguntaEnunciado</p>
+<div class="tarjetaPregunta">
     <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
     <input class="button-preg" type="submit" value="1" name="1"> <br>
     <input class="button-preg" type="submit" value="2" name="2"> <br>

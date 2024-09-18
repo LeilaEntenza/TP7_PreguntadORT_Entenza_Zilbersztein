@@ -53,7 +53,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         }
         public static Categorias GuardarCategoria(int categoria)
         {
-            categoriaElegida = BD.ObtenerCategoria(6);
+            categoriaElegida = BD.ObtenerCategoria(1);
             return categoriaElegida;
         }
         public static void GuardarDificultad(int dificultad)

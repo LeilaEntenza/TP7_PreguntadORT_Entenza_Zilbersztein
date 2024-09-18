@@ -57,7 +57,7 @@ public class HomeController : Controller
         ViewBag.direccionImagen = "/images/" + ViewBag.Categoria + ".png";
         return View("pregunta");
     }
-    public IActionResult SeleccionarRespuestaCorrecta(int respuesta)
+    public IActionResult VerificarRespuesta(int respuesta)
     {
         Juego.SeleccionarRespuestaCorrecta();
         bool esCorrecto = Juego.VerificarRespuesta(respuesta);
