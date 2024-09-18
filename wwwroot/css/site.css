@@ -33,7 +33,8 @@ h1 {
 }
 
 .button-enviar{
-  width: 70%;
+  width: 60%;
+  height: 35px;
   font-size: larger;
   background-color: #ffffff00;
   color: #ffffff;
@@ -69,7 +70,7 @@ main a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #189786;
+  background-color:#5d37ae;
   border-radius: 5px;
   margin: 2%;
 }
@@ -202,6 +203,7 @@ main a:hover {
 
 h2{
   text-align: center;
+  color:#d8d8d8;
 }
 
 .girar{
@@ -221,4 +223,11 @@ h2{
   width: 20%;
   margin-top: -65%;
   margin-left: 1%;
+}
+
+.agrandar{
+  width: 70%;
+  height: 40px;
+  border-radius: 5px;
+  border-color: #44444400;
 }
