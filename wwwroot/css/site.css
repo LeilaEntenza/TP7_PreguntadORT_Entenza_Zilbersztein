@@ -17,6 +17,10 @@ main {
   width: 100%;
 }
 
+.index{
+  color: #ffffff;
+}
+
 h1 {
   text-align: center;
 }
@@ -25,7 +29,7 @@ h1 {
   width: 70%;
   font-size: larger;
   background-color: #ffffff00;
-  color: #d8d8d8;
+  color: #ffffff;
   border-radius: 5px;
   margin: 5%;
   border: 1px solid #ffffff;
@@ -70,14 +74,14 @@ main a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:#5d37ae;
+  background-color:#189786;
   border-radius: 5px;
   margin: 2%;
 }
 
 .button-preg {
   background-color: #ffffff;
-  width: fit-content;
+  width: 100%;
   border-radius: 5px;
   border-color: #18978600;
   margin-top: 10%;
@@ -90,32 +94,32 @@ main a {
 
 p {
   font-size: large;
-  color: #d8d8d8;
+  color: #636363;
 }
 
 .tarjetaPregunta p {
-  color: #d8d8d8;
+  color: #636363;
 }
 
 h1 {
   font-size: 100px;
-  color: #d8d8d8;
+  color: #636363;
 }
 
 h3{
-  color: #d8d8d8;
+  color: #636363;
 }
 
 main a {
   text-decoration: none;
   font-size: large;
-  color: white;
+  color: #636363;
   font-size: larger;
   width: 100%;
 }
 
 main a:hover {
-  color: white;
+  color: #636363;
   font-size: larger;
 }
 
@@ -123,15 +127,15 @@ main a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 70vh; /* Mantén esto como está o ajusta según necesites */
   margin: 0;
+  padding: 0; /* Agrega esto si no lo tienes */
 }
 
-.ruleta {
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  position: absolute;
+.Ruleta {
+  width: 80vw; /* Cambia a un ancho relativo */
+  max-width: 500px; /* Un máximo para evitar que sea demasiado grande en pantallas grandes */
+  border-radius: 50%; /* Cambia a 50% para un círculo perfecto */
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -200,13 +204,13 @@ main a:hover {
 
 h2{
   text-align: center;
-  color:#d8d8d8;
+  color:#ffffff;
 }
 
 .girar{
-  width: 8%;
+  width: 9%;
   top:34%;
-  left: 46%;
+  left: 45.5%;
   position: absolute;
 }
 
@@ -230,7 +234,7 @@ h2{
 }
 .dificultad{
   margin:3%;  
-  color:#d8d8d8;
+  color:#ffffff;
   font-size: large;
 }
 .dificultades{

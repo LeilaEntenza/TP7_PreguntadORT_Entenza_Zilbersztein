@@ -17,7 +17,7 @@
         <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
             @foreach (Respuestas r in @ViewBag.opciones)
             {
-                <input class="button-preg" type="submit" name="respuesta" value="@r.Opcion">@r.Contenido<br>
+                <input class="button-preg" type="submit" name="respuesta" value="@r.Contenido"><br>
             }
         </form>
     </div>

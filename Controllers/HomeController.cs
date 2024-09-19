@@ -35,6 +35,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida)
     {
+        categoriaElegida = 1;
         Juego.GuardarCategoria(categoriaElegida);
         Juego.GuardarDificultad(dificultadElegida);
         Thread.Sleep(1000);
@@ -69,7 +70,7 @@ public class HomeController : Controller
         List<Respuestas> opciones = Juego.CargarRespuestas();
         ViewBag.opciones = opciones;
         ViewBag.colorFondo = Juego.ObtenerColor();
-        ViewBag.Categoria = Juego.GuardarCategoria(Juego.SeccionElegida).Nombre;
+        ViewBag.Categoria = Juego.categoriaElegida.Nombre;
         ViewBag.Puntaje = Juego.TraerPuntaje();
         ViewBag.preguntaEnunciado = Juego.pregunta.Enunciado;
         ViewBag.direccionImagen = Juego.TraerFoto();
@@ -119,6 +120,11 @@ public class HomeController : Controller
     public IActionResult Creditos()
     {
         return View("creditos");
+    }
+
+        public IActionResult Buscar()
+    {
+        return View("pregunta");
     }
 
     [HttpPost]
