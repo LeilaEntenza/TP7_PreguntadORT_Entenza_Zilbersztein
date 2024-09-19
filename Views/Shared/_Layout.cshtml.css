@@ -16,10 +16,9 @@ header{
   background-color: #189786;
 }
 
-
 header img{
   margin-left: 10%;
-  width: 13%;
+  width: 12.5%;
 }
 header ul li{
   width: 22%;
@@ -30,8 +29,6 @@ header ul li{
   font-size: larger;
 
 }
-
-
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;

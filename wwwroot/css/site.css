@@ -119,8 +119,6 @@ main a:hover {
   font-size: larger;
 }
 
-
-/* RULETA 2*/
 .bodyruleta2 {
   display: flex;
   justify-content: center;
@@ -133,7 +131,7 @@ main a:hover {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  position: relative;
+  position: absolute;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -143,7 +141,6 @@ main a:hover {
 
 .seccion {
   width: 50%;
-  height: 50%;
   position: absolute;
   top: 0;
   left: 50%;
@@ -207,10 +204,10 @@ h2{
 }
 
 .girar{
-  width: 13%;
-  margin-top: -53%;
-  margin-left: 43%;
-  position: relative;
+  width: 8%;
+  top:34%;
+  left: 46%;
+  position: absolute;
 }
 
 .PersonajeRuleta{
@@ -230,4 +227,15 @@ h2{
   height: 40px;
   border-radius: 5px;
   border-color: #44444400;
+}
+.dificultad{
+  margin:3%;  
+  color:#d8d8d8;
+  font-size: large;
+}
+.dificultades{
+  width: 15%;
+  display: flex;
+  background-color:#189786;
+  border-radius: 5px;
 }
