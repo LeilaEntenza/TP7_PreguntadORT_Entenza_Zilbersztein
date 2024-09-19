@@ -127,15 +127,15 @@ main a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh; /* Mantén esto como está o ajusta según necesites */
+  height: 70vh;
   margin: 0;
-  padding: 0; /* Agrega esto si no lo tienes */
+  padding: 0;
 }
 
 .Ruleta {
-  width: 80vw; /* Cambia a un ancho relativo */
-  max-width: 500px; /* Un máximo para evitar que sea demasiado grande en pantallas grandes */
-  border-radius: 50%; /* Cambia a 50% para un círculo perfecto */
+  width: 80vw; 
+  max-width: 500px;
+  border-radius: 50%; 
   overflow: hidden;
   display: flex;
   justify-content: center;
