@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "¡Pregunta!";
+    <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
+
+}
+
+<body style="@ViewBag.colorFondo;">
+<h1>@ViewBag.Categoria</h1>
+<p>¡Elegí la categoría que quieras!</p>
+
+<form action='@Url.Action("Pregunta, Home")'>
+    @foreach (Categorias c in @ViewBag.categorias)
+    {
+        <input name="categoria" type="image" src="@c.Foto" value="@c.IdCategoria">
+    }
+</form>

@@ -36,13 +36,17 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             return puntajeActual;
         }
+        public static string TraerFoto()
+        {
+            return categoriaElegida.Foto;
+        }
         public static Preguntas CargarPregunta()
         {
             List<Preguntas> preguntas = new List<Preguntas>();
             preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
             Random r = new Random();
             int numeroPregunta = r.Next(1, preguntas.Count);
-            pregunta = preguntas[0];
+            pregunta = preguntas[numeroPregunta-1];
             return pregunta;
         }
         public static List<Respuestas> CargarRespuestas()
@@ -53,7 +57,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         }
         public static Categorias GuardarCategoria(int categoria)
         {
-            categoriaElegida = BD.ObtenerCategoria(1);
+            categoriaElegida = BD.ObtenerCategoria(1);//CAMBIAR
             return categoriaElegida;
         }
         public static void GuardarDificultad(int dificultad)

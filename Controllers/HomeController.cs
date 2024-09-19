@@ -35,14 +35,33 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida)
     {
+        categoriaElegida = 5;
         Juego.GuardarCategoria(categoriaElegida);
         Juego.GuardarDificultad(dificultadElegida);
         Thread.Sleep(1000);
-        var redirectUrl = Url.Action("Pregunta", "Home");
-        return Json(new { redirectUrl });
+        if (categoriaElegida != 5)
+        {
+            var redirectUrl = Url.Action("Pregunta", "Home");
+            return Json(new { redirectUrl });
+        }
+        else
+        {
+            var redirectUrl = Url.Action("Comodin", "Home");
+            return Json(new {redirectUrl});
+        }
+        
     }
-    public IActionResult Pregunta()
+    public IActionResult Comodin()
     {
+        ViewBag.categorias = Juego.ObtenerCategorias();
+        ViewBag.categorias.RemoveAt(4);
+        ViewBag.direccionImagen = "/images/" + ViewBag.Categoria + ".png";
+        return View("elegircategoria");
+    }
+    public IActionResult Pregunta(int categoria)
+    {
+        if (Juego.categoriaElegida.IdCategoria == 5)
+        Juego.GuardarCategoria(categoria);
         Juego.CargarPregunta();
         return RedirectToAction("mostrarpregunta");
     }
@@ -54,14 +73,20 @@ public class HomeController : Controller
         ViewBag.Categoria = Juego.GuardarCategoria(Juego.SeccionElegida).Nombre;
         ViewBag.Puntaje = Juego.TraerPuntaje();
         ViewBag.preguntaEnunciado = Juego.pregunta.Enunciado;
-        ViewBag.direccionImagen = "/images/" + ViewBag.Categoria + ".png";
+        ViewBag.direccionImagen = Juego.TraerFoto();
         return View("pregunta");
     }
     public IActionResult VerificarRespuesta(int respuesta)
     {
         Juego.SeleccionarRespuestaCorrecta();
         bool esCorrecto = Juego.VerificarRespuesta(respuesta);
-        ViewBag.esCorrecto = esCorrecto;
+        string texto, urlImagen;
+        if (esCorrecto)
+        {
+            texto = "¡¡¡¡¡LA RESPUESTA ES CORRECTA!!!!!";
+        }
+        else
+        texto = "La respuesta es incorrecta D:";
         return View("respuesta");
     }
     public IActionResult Privacy()
@@ -82,15 +107,18 @@ public class HomeController : Controller
     {
         return View("Respuesta");
     }
-    public IActionResult arte(){
+    public IActionResult arte()
+    {
         return View("arte");
     }
-    public IActionResult Creditos(){
+    public IActionResult Creditos()
+    {
         return View("creditos");
     }
 
     [HttpPost]
-    public IActionResult MostrarUnaVista(){
+    public IActionResult MostrarUnaVista()
+    {
         var redirectUrl = Url.Action("Index", "Home");
         return Json(new { redirectUrl });
     }
