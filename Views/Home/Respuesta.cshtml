@@ -3,16 +3,10 @@
     <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
 }
 
-@if(ViewBag.esCorrecto) {
-    <h1>¡¡¡¡¡LA RESPUESTA ES CORRECTA!!!!!</h1>
+
+    <h1>@ViewBag.texto</h1>
     <div class="centrar">
-    <img src="/images/GatoFeliz.gif">
+    <img src=@ViewBag.urlImagen>
     </div>
-}
-else {
-    <h1>La respuesta es incorrecta D:</h1>
-    <div class="centrar">
-    <img src="/images/WalterWhiteFalling.gif">
-    </div>
-}
-<a href='@Url.Action("Jugar", "Home")'>Siguiente pregunta</a>
+
+<a href='@Url.Action("Ruleta", "Home")'>Siguiente pregunta</a>
