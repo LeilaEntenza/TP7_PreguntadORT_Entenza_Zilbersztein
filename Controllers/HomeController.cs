@@ -35,7 +35,6 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida)
     {
-        categoriaElegida = 5;
         Juego.GuardarCategoria(categoriaElegida);
         Juego.GuardarDificultad(dificultadElegida);
         Thread.Sleep(1000);

@@ -8,11 +8,8 @@
         ruleta.style.transition = "none"; 
         var degActual = grados % 360; 
         ruleta.style.transform = `rotate(${degActual}deg)`;
-
-        // Calcular la sección seleccionada
         let seccionSeleccionada;
-        seccionSeleccionada = Math.floor(degActual / 51, 42857142857); // Cada sección ocupa 60 grados
-        // Llamar a la función para enviar el resultado
+        seccionSeleccionada = Math.floor(degActual / 51,42857142857);
         let dificultadElegida = document.querySelector('input[name="dificultadElegida"]:checked').value;
         enviarResultado(seccionSeleccionada, dificultadElegida);
 
