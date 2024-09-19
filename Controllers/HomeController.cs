@@ -76,7 +76,7 @@ public class HomeController : Controller
         ViewBag.direccionImagen = Juego.TraerFoto();
         return View("pregunta");
     }
-    public IActionResult VerificarRespuesta(int respuesta)
+    public IActionResult VerificarRespuesta(string respuesta)
     {
         Juego.SeleccionarRespuestaCorrecta();
         bool esCorrecto = Juego.VerificarRespuesta(respuesta);

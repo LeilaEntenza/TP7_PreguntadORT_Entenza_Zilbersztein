@@ -11,14 +11,14 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
         public static int SeccionElegida{get;set;}
-        public static int numeroRespuestaCorrecta{get;set;}
+        public static string respuestaCorrecta{get;set;}
 
         public static void InicializarJuego()
         {
             username = "";
             puntajeActual = 0;
             cantidadPreguntasCorrectas = 0;
-            numeroRespuestaCorrecta = 0;
+            respuestaCorrecta = null;
         }
         public static List<Categorias> ObtenerCategorias()
         {
@@ -57,7 +57,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         }
         public static Categorias GuardarCategoria(int categoria)
         {
-            categoriaElegida = BD.ObtenerCategoria(categoria);//CAMBIAR
+            categoriaElegida = BD.ObtenerCategoria(categoria);
             return categoriaElegida;
         }
         public static void GuardarDificultad(int dificultad)
@@ -75,15 +75,15 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             return pregunta.Enunciado; 
         }
-        public static int SeleccionarRespuestaCorrecta()
+        public static string SeleccionarRespuestaCorrecta()
         {
-            numeroRespuestaCorrecta = BD.ObtenerRespuestaCorrecta(pregunta.IdPregunta);
-            return numeroRespuestaCorrecta;
+            respuestaCorrecta = BD.ObtenerRespuestaCorrecta(pregunta.IdPregunta);
+            return respuestaCorrecta;
         }
-        public static bool VerificarRespuesta(int respuesta)
+        public static bool VerificarRespuesta(string respuesta)
         {
             bool esCorrecto = false;
-            if (respuesta == numeroRespuestaCorrecta)
+            if (respuesta == respuestaCorrecta)
             esCorrecto = true;           
             return esCorrecto;
         }
