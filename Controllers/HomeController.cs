@@ -84,9 +84,15 @@ public class HomeController : Controller
         if (esCorrecto)
         {
             texto = "¡¡¡¡¡LA RESPUESTA ES CORRECTA!!!!!";
+            urlImagen = "/images/GatoFeliz.gif";
         }
         else
-        texto = "La respuesta es incorrecta D:";
+        {
+            texto = "La respuesta es incorrecta D:";
+            urlImagen = "/images/WalterWhiteFalling.gif";
+        }
+        ViewBag.texto = texto;
+        ViewBag.urlImagen = urlImagen;
         return View("respuesta");
     }
     public IActionResult Privacy()
