@@ -25,6 +25,7 @@ public class HomeController : Controller
     }
     public IActionResult Ruleta()
     {
+        ViewBag.puntos = Juego.TraerPuntaje();
         return View();
     }
     public IActionResult Comenzar(string username)

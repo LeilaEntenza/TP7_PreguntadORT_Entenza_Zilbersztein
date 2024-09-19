@@ -3,7 +3,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
     static public class Juego
     {
         public static string username { get; set; }
-        private static int puntajeActual { get; set; }
+        private static int puntajeActual { get; set; } = 0;
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
         public static Categorias categoriaElegida{get;set;} = new Categorias();
@@ -84,7 +84,17 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             bool esCorrecto = false;
             if (respuesta == respuestaCorrecta)
-            esCorrecto = true;           
+            {
+                esCorrecto = true;
+                if (dificultadElegida.IdDificultad == 1)
+                puntajeActual+=100;
+                else if (dificultadElegida.IdDificultad == 2)
+                puntajeActual+=150;
+                else
+                puntajeActual+=200;     
+            }
+            else
+            puntajeActual = 0;
             return esCorrecto;
         }
 
