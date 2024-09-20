@@ -23,37 +23,3 @@
     </div>
 
 </body>
-<!-- <script>
-    document.AddEventListener('DOMLoader', =>{
-        let tiempoRestante = 3; 
-        let temporizador = setInterval(function() {
-            if (tiempoRestante > 0) {
-                tiempoRestante--;
-                document.getElementById('tiempo').textContent = tiempoRestante;
-            } else{
-                clearInterval(temporizador);
-                ejecutarMetodoAlLlegarACero();
-            }
-        }, 1000);
-        function ejecutarMetodoAlLlegarACero() {
-            console.log("El tiempo ha llegado a 0, ejecutando método...");
-            
-            fetch('/Home/mostrarunavista', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ mensaje: 'Tiempo agotado' })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.redirectUrl) {
-                    
-                    window.location.href = data.redirectUrl;
-                } else {
-                    console.error('No se recibió URL de redireccionamiento');
-                }
-            })
-        }
-    })
-</script> -->
