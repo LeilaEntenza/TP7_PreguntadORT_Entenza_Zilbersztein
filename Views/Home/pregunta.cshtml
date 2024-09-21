@@ -5,7 +5,7 @@
 
 
 <body style="@ViewBag.colorFondo;">
-<div id="temporizador">Tiempo restante: <span id="tiempo">10</span> segundos</div>
+    <div id="temporizador">Tiempo restante: <span id="tiempo">10</span> segundos</div>
     <h1>@ViewBag.Categoria</h1>
     <div class="centrar">
         <img src="@ViewBag.direccionImagen" class="preguntas">
@@ -14,10 +14,11 @@
     <p>Puntaje actual: @ViewBag.Puntaje</p>
     <p>@ViewBag.preguntaEnunciado</p>
     <div class="tarjetaPregunta">
-        <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
+        <form id="respuestaForm">
             @foreach (Respuestas r in @ViewBag.opciones)
             {
-                <input class="button-preg" type="submit" name="respuesta" value="@r.Contenido"><br>
+                <input onclick="enviarRespuesta('@r.Contenido')" class="button-preg" type="button" name="respuesta"
+                    value="@r.Contenido">
             }
         </form>
     </div>

@@ -3,7 +3,10 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
     static public class Juego
     {
         public static string username { get; set; }
+        public static int modo{get;private set;}
         private static int puntajeActual { get; set; } = 0;
+        public static int racha{get; private set;} = 0;
+        public static bool perdio{get; private set;} = false;
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
         public static Categorias categoriaElegida{get;set;} = new Categorias();
@@ -12,13 +15,17 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         private static List<Respuestas> respuestas = new List<Respuestas>();
         public static int SeccionElegida{get;set;}
         public static string respuestaCorrecta{get;set;}
+        public static string texto{get;private set;}
+        public static string urlImagen{get;private set;}
 
         public static void InicializarJuego()
         {
             username = "";
             puntajeActual = 0;
+            racha = 0;
             cantidadPreguntasCorrectas = 0;
             respuestaCorrecta = null;
+            perdio = false;
         }
         public static List<Categorias> ObtenerCategorias()
         {
@@ -27,6 +34,10 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static void GuardarUsuario(string usuario)
         {
             username = usuario;
+        }
+        public static void GuardarModo(int mode)
+        {
+            modo = mode; 
         }
         public static string TraerUsuario()
         {
@@ -40,6 +51,19 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             return categoriaElegida.Foto;
         }
+        public static int TraerRacha()
+        {
+            return racha;
+        }
+        public static void setTexto(string ptexto)
+        {
+            texto = ptexto;
+        }
+        public static void setUrlImagen(string url)
+        {
+            urlImagen = url;
+        }
+        
         public static Preguntas CargarPregunta()
         {
             List<Preguntas> preguntas = new List<Preguntas>();

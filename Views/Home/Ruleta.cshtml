@@ -4,28 +4,40 @@
 }
 
 <p>Puntos actuales: @ViewBag.puntos</p>
-<form Action='@Url.Action("RecibirCategoria", "Home")' method="post" id="ruletaForm">
-    <div class="bodyruleta2">
-        <div id="ruleta" class="ruleta">
-            <img class="Ruleta" src="/images/RuletaMejorada.png">
-        </div>
+<div class="bodyruleta2">
+    <div id="ruleta" class="ruleta">
+        <img class="Ruleta" src="/images/RuletaMejorada.png">
     </div>
-    <div onclick="girar()">
-        <img id="girar" class="girar" src="/images/girar.png">
-    </div>
-    <h2>Dificultades</h2>
+</div>
+<div onclick="girar()">
+    <img id="girar" class="girar" src="/images/girar.png">
+</div>
+<h2>Dificultades</h2>
+<form>
     <div class="dificultades">
         <div class="dificultad">
-            <input type="radio" name="dificultadElegida" value="1" required checked>Fácil
+            <input type="radio" name="dificultadElegida" value="1" checked>Fácil
         </div>
         <div class="dificultad">
-            <input type="radio" name="dificultadElegida" value="2" required>Normal
+            <input type="radio" name="dificultadElegida" value="2">Normal
         </div>
         <div class="dificultad">
-            <input type="radio" name="dificultadElegida" value="3" required>Difícil
+            <input type="radio" name="dificultadElegida" value="3">Difícil
         </div>
     </div>
 </form>
+<h2>Modo</h2>
+<form>
+    <div class="dificultades">
+        <div class="dificultad">
+            <input type="radio" name="modoElegido" value="1" checked>Normal
+        </div>
+        <div class="dificultad">
+            <input type="radio" name="modoElegido" value="2">Racha
+        </div>
+    </div>
+</form>
+
 
 <img class="PersonajeRuleta" src="/images/AcompañamientoRuleta.png">
 <img class="PersonajeRuleta2" src="/images/GeografiaRuleta.png">

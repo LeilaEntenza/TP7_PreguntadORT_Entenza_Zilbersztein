@@ -34,9 +34,10 @@ public class HomeController : Controller
         return View("ruleta");
     }
     [HttpPost]
-    public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida)
+    public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida, int modoElegido)
     {
         categoriaElegida = 1;
+        Juego.GuardarModo(modoElegido);
         Juego.GuardarCategoria(categoriaElegida);
         Juego.GuardarDificultad(dificultadElegida);
         Thread.Sleep(1000);
@@ -48,9 +49,9 @@ public class HomeController : Controller
         else
         {
             var redirectUrl = Url.Action("Comodin", "Home");
-            return Json(new {redirectUrl});
+            return Json(new { redirectUrl });
         }
-        
+
     }
     public IActionResult Comodin()
     {
@@ -62,7 +63,7 @@ public class HomeController : Controller
     public IActionResult Pregunta(int categoria)
     {
         if (Juego.categoriaElegida.IdCategoria == 5)
-        Juego.GuardarCategoria(categoria);
+            Juego.GuardarCategoria(categoria);
         Juego.CargarPregunta();
         return RedirectToAction("mostrarpregunta");
     }
@@ -72,29 +73,37 @@ public class HomeController : Controller
         ViewBag.opciones = opciones;
         ViewBag.colorFondo = Juego.ObtenerColor();
         ViewBag.Categoria = Juego.categoriaElegida.Nombre;
-        ViewBag.Puntaje = Juego.TraerPuntaje();
         ViewBag.preguntaEnunciado = Juego.pregunta.Enunciado;
         ViewBag.direccionImagen = Juego.TraerFoto();
         return View("pregunta");
     }
+    [HttpPost]
     public IActionResult VerificarRespuesta(string respuesta)
     {
         Juego.SeleccionarRespuestaCorrecta();
         bool esCorrecto = Juego.VerificarRespuesta(respuesta);
-        string texto, urlImagen;
         if (esCorrecto)
         {
-            texto = "¡¡¡¡¡LA RESPUESTA ES CORRECTA!!!!!";
-            urlImagen = "/images/GatoFeliz.gif";
+            Juego.setTexto("¡¡¡¡¡LA RESPUESTA ES CORRECTA!!!!!");
+            Juego.setUrlImagen("/images/GatoFeliz.gif");
+        }
+        else if (respuesta != null && respuesta != "null")
+        {
+            Juego.setTexto("La respuesta es incorrecta D:");
+            Juego.setUrlImagen("/images/WalterWhiteFalling.gif");
+        }
+        else if (respuesta == null || respuesta == "null")
+        {
+            Juego.setTexto("Te quedaste sin tiempo!!");
+            Juego.setUrlImagen("/images/WalterWhiteFalling.gif");
         }
         else
         {
-            texto = "La respuesta es incorrecta D:";
-            urlImagen = "/images/WalterWhiteFalling.gif";
+            Juego.setTexto("tenemos un problema");
+            Juego.setUrlImagen("");
         }
-        ViewBag.texto = texto;
-        ViewBag.urlImagen = urlImagen;
-        return View("respuesta");
+        var redirectUrl = Url.Action("Respuesta", "Home");
+        return Json(new { redirectUrl });
     }
     public IActionResult Privacy()
     {
@@ -112,6 +121,8 @@ public class HomeController : Controller
     }
     public IActionResult Respuesta()
     {
+        ViewBag.texto = Juego.texto;
+        ViewBag.urlImagen = Juego.urlImagen;
         return View("Respuesta");
     }
     public IActionResult arte()
@@ -123,7 +134,7 @@ public class HomeController : Controller
         return View("creditos");
     }
 
-        public IActionResult Buscar()
+    public IActionResult Buscar()
     {
         return View("pregunta");
     }

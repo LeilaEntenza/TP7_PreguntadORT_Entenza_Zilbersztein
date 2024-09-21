@@ -22,78 +22,92 @@ function girar() {
 
     setTimeout(function () {
         // Obtener la dificultad seleccionada
-        let dificultadElegida = document.querySelector('input[name="dificultadElegida"]:checked').value;
+        let nivelElegido = document.querySelector('input[name="dificultadElegida"]:checked').value;
+        let modoElegido = document.querySelector('input[name="modoElegido"]:checked').value;
 
         // Enviar resultado al servidor
-        enviarResultado(seccionSeleccionada, dificultadElegida);
+        enviarResultado(seccionSeleccionada, nivelElegido, modoElegido);
 
         girando = false; // Reiniciar el estado después de que termine el giro
     }, 4000);
 }
 
-function enviarResultado(seccionSeleccionada, dificultadElegida) {
-    console.log(`Sección: ${seccionSeleccionada}, Dificultad: ${dificultadElegida}`);
+function enviarResultado(seccionSeleccionada, nivelElegido, modoDeJuego) {
+    console.log(`Enviando: Categoria=${seccionSeleccionada}, Dificultad=${nivelElegido}, Modo=${modoDeJuego}`);
 
     fetch(`/Home/RecibirCategoria`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ categoriaElegida: seccionSeleccionada, dificultadElegida: dificultadElegida }) // sin +1 aquí
+        body: JSON.stringify({
+            categoriaElegida: seccionSeleccionada,
+            dificultadElegida: nivelElegido,
+            modoElegido: modoDeJuego
+        })
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.redirectUrl) {
-                window.location.href = data.redirectUrl;
-            } else {
-                console.error('No se recibió URL de redireccionamiento');
+        .then(response => {
+            console.log(response); // Inspeccionar la respuesta aquí
+            if (!response.ok) {
+                return response.text().then(text => { throw new Error(text); });
             }
-        });
-}
-
-
-
-
-
-
-
-
-// //TEMPORIZADOR
-let tiempoRestante = 3; // Tiempo inicial en segundos
-let formularioEnviado = false; // Variable para saber si el formulario fue enviado
-
-// // Iniciar el temporizador
-if (window.location.pathname === '/Home/mostrarpregunta') {
-    let temporizador = setInterval(function () {
-        if (tiempoRestante > 0) {
-            tiempoRestante--;
-            document.getElementById('tiempo').textContent = tiempoRestante;
-        } else {
-            clearInterval(temporizador);
-            ejecutarMetodoAlLlegarACero(); // Llamar método si no se envió el formulario
-        }
-    }, 1000);
-}
-
-// Función para llamar al método del servidor cuando el tiempo llegue a 0
-function ejecutarMetodoAlLlegarACero() {
-    console.log("El tiempo ha llegado a 0, ejecutando método...");
-
-    // Ejemplo de llamada a un método del controlador usando fetch
-    fetch('/Home/mostrarunavista', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ mensaje: 'Tiempo agotado' })
-    })
-        .then(response => response.json())
+            return response.json();
+        })
         .then(data => {
             if (data.redirectUrl) {
-                // Redirige a la URL proporcionada por el servidor
                 window.location.href = data.redirectUrl;
             } else {
                 console.error('No se recibió URL de redireccionamiento');
             }
         })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
+
+let tiempoRestante = 3;
+let temporizador;
+
+// Iniciar el temporizador solo en la página específica
+if (window.location.pathname === '/Home/mostrarpregunta') {
+    // Iniciar el temporizador
+    temporizador = setInterval(function () {
+        if (tiempoRestante > 0) {
+            tiempoRestante--;
+            document.getElementById('tiempo').textContent = tiempoRestante;
+        } else {
+            clearInterval(temporizador);
+            enviarRespuesta(null); // Si el tiempo se agota, enviamos `null`
+        }
+    }, 1000);
+}
+
+// Función para enviar la respuesta al servidor
+function enviarRespuesta(respuesta) {
+    console.log('Respuesta a enviar:', respuesta); // Verifica el valor aquí
+
+    // Usar FormData para enviar los datos
+    const formData = new FormData();
+    formData.append('respuesta', respuesta);
+
+    fetch('/Home/VerificarRespuesta', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.redirectUrl) {
+            // Redirige a la URL proporcionada por el servidor
+            window.location.href = data.redirectUrl;
+        } else {
+            console.error('No se recibió URL de redireccionamiento');
+        }
+    })
+    .catch(error => {
+        console.error('Error en la respuesta del servidor:', error);
+    });
+}
+
+
+
+
