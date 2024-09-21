@@ -130,17 +130,25 @@ main a:hover {
   height: 70vh;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .Ruleta {
-  width: 80vw; 
-  max-width: 500px;
-  border-radius: 50%; 
+  width: 80%; 
+  border-radius: 50%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   will-change: transform;
+  aspect-ratio: 1; 
+}
+
+@media (max-width: 768px) {
+  .Ruleta {
+    width: 90%; 
+    height: 90%; 
+  }
 }
 
 .seccion {
@@ -207,11 +215,12 @@ h2{
   color:#ffffff;
 }
 
-.girar{
+.girar {
   width: 9%;
-  top:34%;
-  left: 45.5%;
   position: absolute;
+  top: 50%; /* Centramos en el eje vertical */
+  left: 50%; /* Centramos en el eje horizontal */
+  transform: translate(-50%, -50%); /* Ajustamos la posición para centrarlo exactamente */
 }
 
 .PersonajeRuleta{
