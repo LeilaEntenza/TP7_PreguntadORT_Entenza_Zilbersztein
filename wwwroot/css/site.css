@@ -131,6 +131,7 @@ main a:hover {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  position:relative;
 }
 
 .Ruleta {
@@ -142,6 +143,7 @@ main a:hover {
   align-items: center;
   will-change: transform;
   aspect-ratio: 1; 
+  position: relative;
 }
 
 @media (max-width: 768px) {
@@ -216,11 +218,12 @@ h2{
 }
 
 .girar {
-  width: 9%;
+  width: 10%; 
+  height: auto;
   position: absolute;
-  top: 50%; /* Centramos en el eje vertical */
-  left: 50%; /* Centramos en el eje horizontal */
-  transform: translate(-50%, -50%); /* Ajustamos la posición para centrarlo exactamente */
+  transform: translate(-50%, -50%); 
+  top: 50%;
+  left: 50%;
 }
 
 .PersonajeRuleta{
@@ -251,4 +254,16 @@ h2{
   display: flex;
   background-color:#189786;
   border-radius: 5px;
+}
+
+.imagenElegir{
+  width: 15%;
+}
+
+.TarjetaElegir{
+
+}
+
+.TarjetaElegir p{
+  color: white;
 }

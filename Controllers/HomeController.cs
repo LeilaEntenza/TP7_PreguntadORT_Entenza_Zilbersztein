@@ -134,9 +134,9 @@ public class HomeController : Controller
         return View("creditos");
     }
 
-    public IActionResult Buscar()
+    public IActionResult Elegir()
     {
-        return View("pregunta");
+        return View("ElegirCategorias");
     }
 
     [HttpPost]
