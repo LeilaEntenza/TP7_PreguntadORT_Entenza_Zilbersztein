@@ -25,14 +25,16 @@ public class HomeController : Controller
     }
     public IActionResult Ruleta()
     {
+        if (Juego.modo == 2)
+        Juego.ResetPuntaje();
         ViewBag.puntos = Juego.TraerPuntaje();
-        Juego.InicializarJuego();
+        Juego.ResetPregunta();
         return View();
     }
-    public IActionResult Comenzar(string username)
+    public IActionResult Comenzar(string Nombre)
     {
-        Juego.GuardarUsuario(username);
-        return View("ruleta");
+        Juego.GuardarUsuario(Nombre);
+        return RedirectToAction("ruleta");
     }
     [HttpPost]
     public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida, int modoElegido)
@@ -63,21 +65,30 @@ public class HomeController : Controller
     }
     public IActionResult Pregunta(int categoria)
     {
-        if (categoria == null)
+        if (Juego.categoriaElegida.IdCategoria == 5)
+            Juego.GuardarCategoria(categoria);
+        if (Juego.modo == 1)
         {
-            if (Juego.modo == 2 && !Juego.perdio)
+            if (!Juego.categoriaYaElegida)
+                return RedirectToAction("ruleta");
+            else
             {
-                if (Juego.categoriaElegida.IdCategoria == 5)
-                    Juego.GuardarCategoria(categoria);
                 Juego.CargarPregunta();
                 return RedirectToAction("mostrarpregunta");
             }
-            else if (Juego.modo == 1)
-            {
-                return RedirectToAction("ruleta");
-            }
         }
-        return RedirectToAction("vistafinracha");
+        else if (Juego.modo == 2)
+        {
+            if (!Juego.perdio)
+            {
+                Juego.CargarPregunta();
+                return RedirectToAction("mostrarpregunta");
+            }
+            else
+                return RedirectToAction("vistafinracha");
+        }
+        else
+            return View("creditos");
     }
     public IActionResult mostrarPregunta()
     {
@@ -87,6 +98,8 @@ public class HomeController : Controller
         ViewBag.Categoria = Juego.categoriaElegida.Nombre;
         ViewBag.preguntaEnunciado = Juego.pregunta.Enunciado;
         ViewBag.direccionImagen = Juego.TraerFoto();
+        ViewBag.Nombre = Juego.TraerUsuario();
+        ViewBag.puntaje = Juego.TraerPuntaje();
         return View("pregunta");
     }
     [HttpPost]
@@ -138,13 +151,11 @@ public class HomeController : Controller
         if (Juego.modo == 2 && !Juego.perdio)
         {
             ViewBag.siguienteUrl = Url.Action("Pregunta", "Home");
+            ViewBag.urlJS = "/Home/Pregunta";
         }
-        else ViewBag.siguienteUrl = Url.Action("Ruleta", "Home");
+        else if (Juego.modo == 1) {ViewBag.siguienteUrl = Url.Action("Ruleta", "Home");ViewBag.urlJS = "/Home/Ruleta";}
+        else if (Juego.modo == 2 && Juego.perdio) {ViewBag.siguienteUrl = Url.Action("vistafinracha", "Home"); ViewBag.urlJS = "/Home/vistafinracha";};
         return View("Respuesta");
-    }
-    public IActionResult arte()
-    {
-        return View("arte");
     }
     public IActionResult Creditos()
     {
@@ -155,16 +166,9 @@ public class HomeController : Controller
     {
         return View("ElegirCategorias");
     }
-
-    [HttpPost]
-    public IActionResult MostrarUnaVista()
-    {
-        var redirectUrl = Url.Action("Index", "Home");
-        return Json(new { redirectUrl });
-    }
     public IActionResult VistaFinRacha()
     {
-        ViewBag.racha = Juego.racha;
+        ViewBag.racha = Juego.TraerPuntaje();
         return View("finracha");
     }
 }

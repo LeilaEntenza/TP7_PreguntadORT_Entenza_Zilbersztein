@@ -3,29 +3,41 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
     static public class Juego
     {
         public static string username { get; set; }
-        public static int modo{get;private set;}
+        public static int modo { get; private set; }
         private static int puntajeActual { get; set; } = 0;
-        public static int racha{get; private set;} = 0;
-        public static bool perdio{get; private set;} = true;
+        public static int racha { get; private set; } = 0;
+        public static bool perdio { get; private set; } = true;
+        public static bool categoriaYaElegida { get; private set; }
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
-        public static Categorias categoriaElegida{get;set;} = new Categorias();
-        private static Dificultades dificultadElegida{get;set;} = new Dificultades();
+        public static Categorias categoriaElegida { get; set; } = new Categorias();
+        private static int numeroAnterior { get; set; }
+        private static Dificultades dificultadElegida { get; set; } = new Dificultades();
         public static Preguntas pregunta = new Preguntas();
         private static List<Respuestas> respuestas = new List<Respuestas>();
-        public static int SeccionElegida{get;set;}
-        public static string respuestaCorrecta{get;set;}
-        public static string texto{get;private set;}
-        public static string urlImagen{get;private set;}
+        public static int SeccionElegida { get; set; }
+        public static string respuestaCorrecta { get; set; }
+        public static string texto { get; private set; }
+        public static string urlImagen { get; private set; }
 
         public static void InicializarJuego()
         {
             username = "";
             puntajeActual = 0;
-            racha = 0;
             cantidadPreguntasCorrectas = 0;
             respuestaCorrecta = null;
             perdio = true;
+            categoriaYaElegida = false;
+        }
+        public static void ResetPregunta()
+        {
+            pregunta = null;
+            categoriaYaElegida = false;
+            respuestaCorrecta = null;
+        }
+        public static void ResetPuntaje()
+        {
+            puntajeActual = 0;
         }
         public static List<Categorias> ObtenerCategorias()
         {
@@ -37,10 +49,13 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         }
         public static void GuardarModo(int mode)
         {
-            modo = mode; 
-            puntajeActual = 0;
+            if (modo != mode)
+            {
+                puntajeActual = 0;
+                modo = mode;
+            }
             if (modo == 2)
-            perdio = false;
+                perdio = false;
         }
         public static string TraerUsuario()
         {
@@ -62,18 +77,27 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         {
             texto = ptexto;
         }
+        public static string TraerDificultad()
+        {
+            return dificultadElegida.Nombre;
+        }
         public static void setUrlImagen(string url)
         {
             urlImagen = url;
         }
-        
+
         public static Preguntas CargarPregunta()
         {
-            List<Preguntas> preguntas = new List<Preguntas>();
-            preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
-            Random r = new Random();
-            int numeroPregunta = r.Next(1, preguntas.Count);
-            pregunta = preguntas[numeroPregunta-1];
+            int numeroPregunta;
+            do
+            {
+                List<Preguntas> preguntas = new List<Preguntas>();
+                preguntas = BD.ObtenerPreguntas(dificultadElegida.IdDificultad, categoriaElegida.IdCategoria);
+                Random r = new Random();
+                numeroPregunta = r.Next(1, preguntas.Count);
+                pregunta = preguntas[numeroPregunta - 1];
+            } while (numeroPregunta == numeroAnterior);
+            numeroAnterior = numeroPregunta;
             return pregunta;
         }
         public static List<Respuestas> CargarRespuestas()
@@ -85,6 +109,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static Categorias GuardarCategoria(int categoria)
         {
             categoriaElegida = BD.ObtenerCategoria(categoria);
+            categoriaYaElegida = true;
             return categoriaElegida;
         }
         public static void GuardarDificultad(int dificultad)
@@ -100,7 +125,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         }
         public static string ObtenerEnunciado()
         {
-            return pregunta.Enunciado; 
+            return pregunta.Enunciado;
         }
         public static string SeleccionarRespuestaCorrecta()
         {
@@ -110,18 +135,24 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static bool VerificarRespuesta(string respuesta)
         {
             bool esCorrecto = false;
+            categoriaYaElegida = false;
             if (respuesta == respuestaCorrecta)
             {
-                esCorrecto = true;
-                if (dificultadElegida.IdDificultad == 1)
-                puntajeActual+=100;
-                else if (dificultadElegida.IdDificultad == 2)
-                puntajeActual+=150;
+                if (modo == 2)
+                    puntajeActual++;
                 else
-                puntajeActual+=200;     
+                {
+                    if (dificultadElegida.IdDificultad == 1)
+                        puntajeActual += 100;
+                    else if (dificultadElegida.IdDificultad == 2)
+                        puntajeActual += 150;
+                    else
+                        puntajeActual += 200;
+                }
+                esCorrecto = true;
             }
             else
-            puntajeActual = 0;
+            { perdio = true; if (modo == 1) puntajeActual = 0; }
             return esCorrecto;
         }
 

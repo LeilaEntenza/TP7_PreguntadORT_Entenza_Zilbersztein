@@ -58,7 +58,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
                 string sql = "select * from Dificultades where idDificultad = @piddificultad";
-                db.QueryFirstOrDefault<Dificultades>(sql, new {piddificultad = idDificultad});
+                dificultades = db.QueryFirstOrDefault<Dificultades>(sql, new {piddificultad = idDificultad});
             }
             return dificultades;
         }
@@ -69,7 +69,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             {
                 string sql;
                 sql = $"select * from Preguntas p inner join Categorias c on p.IdCategoria = c.IdCategoria inner join Dificultades d on p.IdDificultad = d.IdDificultad where d.IdDificultad = @pdificultad AND c.idCategoria = @pcategoria";
-                preguntas = db.Query<Preguntas>(sql, new {pdificultad = 1, pcategoria = categoria}).ToList();
+                preguntas = db.Query<Preguntas>(sql, new {pdificultad = dificultad, pcategoria = categoria}).ToList();
             }
             return preguntas;
         }

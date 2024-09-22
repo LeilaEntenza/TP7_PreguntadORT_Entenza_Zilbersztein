@@ -3,40 +3,24 @@
     <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
 }
 
-<p>Puntos actuales: @ViewBag.puntos</p>
+<p>Puntaje actual: @ViewBag.puntos</p>
 <div class="RyG">
   <div class="bodyruleta2">
     <div id="ruleta" class="ruleta">
-      <img class="Ruleta" src="/images/RuletaMejorada.png">
-      <img id="girar" class="girar" src="/images/girar.png">
+      <img class="Ruleta" id="imgruleta" src="/images/RuletaMejorada.png">
+      <img onclick="girar()" id="girar" class="girar" src="/images/girar.png">
     </div>
   </div>
 </div>
-<h2>Dificultades</h2>
-<form>
-    <div class="dificultades">
-        <div class="dificultad">
-            <input type="radio" name="dificultadElegida" value="1" checked>Fácil
-        </div>
-        <div class="dificultad">
-            <input type="radio" name="dificultadElegida" value="2">Normal
-        </div>
-        <div class="dificultad">
-            <input type="radio" name="dificultadElegida" value="3">Difícil
-        </div>
-    </div>
+<form id="ruletaForm">
+    <input type="hidden" name="categoriaElegida" id="categoriaElegida" value="">
+    <input type="radio" name="dificultadElegida" value="1" checked>Fácil
+    <input type="radio" name="dificultadElegida" value="2">Normal
+    <input type="radio" name="dificultadElegida" value="3">Difícil
+    <input type="radio" name="modoElegido" value="1" checked>Normal
+    <input type="radio" name="modoElegido" value="2">Racha
 </form>
-<h2>Modo</h2>
-<form>
-    <div class="dificultades">
-        <div class="dificultad">
-            <input type="radio" name="modoElegido" value="1" checked>Normal
-        </div>
-        <div class="dificultad">
-            <input type="radio" name="modoElegido" value="2">Racha
-        </div>
-    </div>
-</form>
+
 
 
 <img class="PersonajeRuleta" src="/images/AcompañamientoRuleta.png">
