@@ -26,6 +26,7 @@ public class HomeController : Controller
     public IActionResult Ruleta()
     {
         ViewBag.puntos = Juego.TraerPuntaje();
+        Juego.InicializarJuego();
         return View();
     }
     public IActionResult Comenzar(string username)
@@ -62,10 +63,21 @@ public class HomeController : Controller
     }
     public IActionResult Pregunta(int categoria)
     {
-        if (Juego.categoriaElegida.IdCategoria == 5)
-            Juego.GuardarCategoria(categoria);
-        Juego.CargarPregunta();
-        return RedirectToAction("mostrarpregunta");
+        if (categoria == null)
+        {
+            if (Juego.modo == 2 && !Juego.perdio)
+            {
+                if (Juego.categoriaElegida.IdCategoria == 5)
+                    Juego.GuardarCategoria(categoria);
+                Juego.CargarPregunta();
+                return RedirectToAction("mostrarpregunta");
+            }
+            else if (Juego.modo == 1)
+            {
+                return RedirectToAction("ruleta");
+            }
+        }
+        return RedirectToAction("vistafinracha");
     }
     public IActionResult mostrarPregunta()
     {
@@ -123,6 +135,11 @@ public class HomeController : Controller
     {
         ViewBag.texto = Juego.texto;
         ViewBag.urlImagen = Juego.urlImagen;
+        if (Juego.modo == 2 && !Juego.perdio)
+        {
+            ViewBag.siguienteUrl = Url.Action("Pregunta", "Home");
+        }
+        else ViewBag.siguienteUrl = Url.Action("Ruleta", "Home");
         return View("Respuesta");
     }
     public IActionResult arte()
@@ -144,5 +161,10 @@ public class HomeController : Controller
     {
         var redirectUrl = Url.Action("Index", "Home");
         return Json(new { redirectUrl });
+    }
+    public IActionResult VistaFinRacha()
+    {
+        ViewBag.racha = Juego.racha;
+        return View("finracha");
     }
 }

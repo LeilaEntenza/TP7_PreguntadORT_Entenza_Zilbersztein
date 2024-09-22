@@ -6,7 +6,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static int modo{get;private set;}
         private static int puntajeActual { get; set; } = 0;
         public static int racha{get; private set;} = 0;
-        public static bool perdio{get; private set;} = false;
+        public static bool perdio{get; private set;} = true;
         private static int cantidadPreguntasCorrectas { get; set; }
         private static List<int> preguntasUtilizadas { get; set; } = new List<int>();
         public static Categorias categoriaElegida{get;set;} = new Categorias();
@@ -25,7 +25,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             racha = 0;
             cantidadPreguntasCorrectas = 0;
             respuestaCorrecta = null;
-            perdio = false;
+            perdio = true;
         }
         public static List<Categorias> ObtenerCategorias()
         {
@@ -38,6 +38,9 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static void GuardarModo(int mode)
         {
             modo = mode; 
+            puntajeActual = 0;
+            if (modo == 2)
+            perdio = false;
         }
         public static string TraerUsuario()
         {

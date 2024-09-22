@@ -109,5 +109,22 @@ function enviarRespuesta(respuesta) {
 }
 
 
+//TEMPORIZADOR 2
+let tiempoRestante2 = 3;
+if (window.location.pathname === '/Home/Respuesta') {
+    // Iniciar el temporizador
+    temporizador2 = setInterval(function () {
+        if (tiempoRestante2 > 0) {
+            tiempoRestante2--;
+            document.getElementById('tiempo2').textContent = tiempoRestante2;
+        } else {
+            clearInterval(temporizador2);
+            fetch('/Home/Pregunta', {
+                method: 'GET',
+            })
+        }
+    }, 1000);
+}
+
 
 
