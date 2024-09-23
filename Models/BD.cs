@@ -4,7 +4,7 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
 {
     public static class BD
     {
-        private static string _connectionString { get; set; } = @"Server=DESKTOP-CV8MP7S\SQLEXPRESS;DataBase=PreguntadORT;Trusted_Connection=true;";
+        private static string _connectionString { get; set; } = @"Server=DESKTOP-MC3LPAC\SQLEXPRESS;DataBase=PreguntadORT;Trusted_Connection=true;";
 
         //YA USADAS
         public static Categorias ObtenerCategoria(int numero)

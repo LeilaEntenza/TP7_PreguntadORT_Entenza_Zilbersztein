@@ -162,9 +162,9 @@ public class HomeController : Controller
         return View("creditos");
     }
 
-    public IActionResult Elegir()
+    public IActionResult Tutorial()
     {
-        return View("ElegirCategorias");
+        return View("Tutorial");
     }
     public IActionResult VistaFinRacha()
     {

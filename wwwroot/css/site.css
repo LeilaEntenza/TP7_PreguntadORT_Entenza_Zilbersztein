@@ -245,26 +245,46 @@ h2{
   border-radius: 5px;
   border-color: #44444400;
 }
-.dificultad{
+.opciones{
   margin:3%;  
-  color:#ffffff;
-  font-size: large;
 }
-.dificultades{
-  width: 15%;
+.formulario{
+  width: 20%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   background-color:#189786;
   border-radius: 5px;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .imagenElegir{
-  width: 15%;
+  width: 70%;
+  margin: 2%;
 }
 
 .TarjetaElegir{
-
+width: 20%;
+background-color: #636363;
+border-radius: 5px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 2%;
 }
 
 .TarjetaElegir p{
+  color: white;
+  text-align: center;
+}
+
+.Tarjetas{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.textoTutorial{
   color: white;
 }
