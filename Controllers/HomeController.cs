@@ -60,7 +60,7 @@ public class HomeController : Controller
     {
         ViewBag.categorias = Juego.ObtenerCategorias();
         ViewBag.categorias.RemoveAt(4);
-        ViewBag.direccionImagen = "/images/" + ViewBag.Categoria + ".png";
+        ViewBag.direccionesImagen = Juego.ObtenerImagenesCategorias(ViewBag.categorias);
         return View("elegircategoria");
     }
     public IActionResult Pregunta(int categoria)
@@ -130,6 +130,11 @@ public class HomeController : Controller
         var redirectUrl = Url.Action("Respuesta", "Home");
         return Json(new { redirectUrl });
     }
+    public IActionResult RestablecerSegundoModo()
+    {
+        Juego.RestablecerSegundoModo();
+        return RedirectToAction("Pregunta");
+    }
     public IActionResult Privacy()
     {
         return View();
@@ -169,6 +174,6 @@ public class HomeController : Controller
     public IActionResult VistaFinRacha()
     {
         ViewBag.racha = Juego.TraerPuntaje();
-        return View("finracha");
+        return View("findeljuego");
     }
 }

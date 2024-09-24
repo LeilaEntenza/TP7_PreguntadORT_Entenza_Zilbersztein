@@ -5,13 +5,43 @@
 }
 
 <body style="@ViewBag.colorFondo;">
-<h1>@ViewBag.Categoria</h1>
-<p>¡Elegí la categoría que quieras!</p>
+    <h1 class="index">¡Elegí una categoría!</h1>
+    <div class="Tarjetas">
+        <div class="TarjetaElegir">
+            <img src="/images/historia.png" class="imagenElegir" alt="Logo historia" style="cursor: pointer;"
+                onclick="window.location.href='@Url.Action("Pregunta", "Home")?categoria=1'" />
+            <p>Historia</p>
+        </div>
+        <div class=" TarjetaElegir">
+            <img class="imagenElegir" src="/images/deportes.png"
+                onclick="window.location.href='@Url.Action("Pregunta", "Home")?categoria=2'" />
 
-<form action='@Url.Action("Pregunta, Home")'>
-    @foreach (Categorias c in @ViewBag.categorias)
-    {
-        <input name="categoria" type="image" src="@c.Foto" value="@c.IdCategoria">
-    }
-</form>
+            <p>Deportes</p>
+        </div>
+        <div class="TarjetaElegir">
+            <img class="imagenElegir" src="/images/arte.png"
+                onclick="window.location.href='@Url.Action("Pregunta", "Home")?categoria=3'" />
+            <p>Arte</p>
+        </div>
+        <div class="TarjetaElegir">
+            <img class="imagenElegir" src="/images/entretenimiento.png"
+                onclick="window.location.href='@Url.Action("Pregunta", "Home")?categoria=4'" />
+            <p>Entretenimiento</p>
+
+        </div>
+        <div class="TarjetaElegir">
+            <img class="imagenElegir" src="/images/geografía.png"
+                onclick="window.location.href='@Url.Action("Pregunta", "Home")?categoria=5'" />
+            <p>Geografía</p>
+        </div>
+        <div class="TarjetaElegir">
+            <img class="imagenElegir" src="/images/ciencia.png"
+                onclick="window.location.href='@Url.Action("Pregunta", "Home")?categoria=6'" />
+            <p>Ciencia</p>
+        </div>
+    </div>
+
+
+
+
 </body>

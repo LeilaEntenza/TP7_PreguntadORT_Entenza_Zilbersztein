@@ -6,9 +6,9 @@
   outline: none;
 }
 
-body{
+body {
   font-family: mikado;
-  background-size: cover;  
+  background-size: cover;
   background-color: #5d37ae;
 }
 
@@ -17,7 +17,7 @@ main {
   width: 100%;
 }
 
-.index{
+.index {
   color: #ffffff;
 }
 
@@ -36,7 +36,7 @@ h1 {
 
 }
 
-.button-enviar{
+.button-enviar {
   width: 60%;
   height: 35px;
   font-size: larger;
@@ -50,7 +50,7 @@ h1 {
   text-decoration: none;
   color: #ffffff;
 
-} 
+}
 
 .centrar {
   display: flex;
@@ -70,22 +70,25 @@ main a {
   margin: 3%;
 }
 
+.formpregunta{
+  width: 50%;
+}
 .tarjetaPregunta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color:#189786;
+  display:flex;
+  justify-content: center;
+  width:100%;
+  background-color: #189786;
   border-radius: 5px;
   margin: 2%;
 }
-
 .button-preg {
   background-color: #ffffff;
-  width: 100%;
+  width: 100%; 
   border-radius: 5px;
   border-color: #18978600;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 5px;
+  margin-bottom: 5px; 
+  display: block;
 }
 
 .button-preg:hover {
@@ -106,7 +109,7 @@ h1 {
   color: #636363;
 }
 
-h3{
+h3 {
   color: #636363;
 }
 
@@ -131,25 +134,25 @@ main a:hover {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  position:relative;
+  position: relative;
 }
 
 .Ruleta {
-  width: 80%; 
+  width: 80%;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   will-change: transform;
-  aspect-ratio: 1; 
+  aspect-ratio: 1;
   position: relative;
 }
 
 @media (max-width: 768px) {
   .Ruleta {
-    width: 90%; 
-    height: 90%; 
+    width: 90%;
+    height: 90%;
   }
 }
 
@@ -199,92 +202,95 @@ main a:hover {
   transform: translate(-50%, -50%);
 }
 
-.seccion img{
+.seccion img {
   max-width: 100%;
   object-fit: contain;
 }
 
-.preguntas{
+.preguntas {
   width: 10%;
 }
 
-.formNombre{
+.formNombre {
   size-adjust: 50%;
 }
 
-h2{
+h2 {
   text-align: center;
-  color:#ffffff;
+  color: #ffffff;
 }
 
 .girar {
-  width: 10%; 
+  width: 10%;
   height: auto;
   position: absolute;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.PersonajeRuleta{
+.PersonajeRuleta {
   width: 20%;
   margin-top: -53%;
   margin-left: 80%;
 }
 
-.PersonajeRuleta2{
+.PersonajeRuleta2 {
   width: 20%;
   margin-top: -65%;
   margin-left: 1%;
 }
 
-.agrandar{
+.agrandar {
   width: 70%;
   height: 40px;
   border-radius: 5px;
   border-color: #44444400;
 }
-.opciones{
-  margin:3%;  
+
+.opciones {
+  margin: 3%;
 }
-.formulario{
+
+.formulario {
   width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color:#189786;
+  background-color: #189786;
   border-radius: 5px;
   margin-top: 1%;
   margin-bottom: 1%;
 }
 
-.imagenElegir{
+.imagenElegir {
   width: 70%;
+  margin: 2%;
+  cursor:pointer;
+}
+
+.TarjetaElegir {
+  width: 20%;
+  background-color: #636363;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 2%;
 }
 
-.TarjetaElegir{
-width: 20%;
-background-color: #636363;
-border-radius: 5px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin: 2%;
-}
-
-.TarjetaElegir p{
+.TarjetaElegir p {
   color: white;
   text-align: center;
 }
 
-.Tarjetas{
+.Tarjetas {
   display: flex;
   flex-wrap: wrap;
 }
 
-.textoTutorial{
+.textoTutorial {
   color: white;
 }

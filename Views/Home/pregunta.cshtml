@@ -14,7 +14,7 @@
     <p>Puntaje actual: @ViewBag.Puntaje</p>
     <p>@ViewBag.preguntaEnunciado</p>
     <div class="tarjetaPregunta">
-        <form id="respuestaForm">
+        <form class="formpregunta" id="respuestaForm">
             @foreach (Respuestas r in @ViewBag.opciones)
             {
                 <input onclick="enviarRespuesta('@r.Contenido')" class="button-preg" type="button" name="respuesta"

@@ -29,6 +29,10 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
             perdio = true;
             categoriaYaElegida = false;
         }
+        public static void RestablecerSegundoModo()
+        {
+            perdio = false;
+        }
         public static void ResetPregunta()
         {
             pregunta = null;
@@ -126,6 +130,15 @@ namespace TP7_PreguntadORT_Entenza_Zilbersztein.Models
         public static string ObtenerEnunciado()
         {
             return pregunta.Enunciado;
+        }
+        public static List<string> ObtenerImagenesCategorias(List<Categorias> categorias)
+        {
+            List<string> fotosCategorias = new List<string>();
+            for (int i = 0; i < categorias.Count-1; i++)
+            {
+                fotosCategorias.Add(categorias[i].Foto);
+            }
+            return fotosCategorias;
         }
         public static string SeleccionarRespuestaCorrecta()
         {
