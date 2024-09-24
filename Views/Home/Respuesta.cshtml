@@ -1,13 +1,14 @@
 @{
-    ViewData["Title"]="Respuesta";
+    ViewData["Title"] = "Respuesta";
     <link href="https://fonts.cdnfonts.com/css/mikado" rel="stylesheet">
 }
 
 
-    <h1>@ViewBag.texto</h1>
-    <div class="centrar">
-    <img src=@ViewBag.urlImagen>
-    </div>
 
-<a id="temporizador2" href='@ViewBag.siguienteUrl'>Continuar (<span id ="tiempo2">3</span>)</a>
+<h1 class="index">@ViewBag.texto</h1>
+<div class="centrar">
+    <img src=@ViewBag.urlImagen>
+</div>
+
+<a class="index" id="temporizador2" href='@ViewBag.siguienteUrl'>Continuar (<span id="tiempo2">3</span>)</a>
 <input id="direccion" type="hidden" value='@ViewBag.urlJS'>

@@ -65,7 +65,9 @@ h1 {
   width: 50%;
   margin: -15% 0 0 -25%;
 }
-
+.centrartexto{
+  margin-left:50%;
+}
 main a {
   margin: 3%;
 }
