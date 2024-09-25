@@ -295,5 +295,9 @@ h2 {
 
 .alinear{
   margin-top: 2%;
-  margin-left: 48%;
+  margin-left: 45%;
+  font-size: large;
+}
+.alinear p{
+  font-size: larger;
 }
