@@ -6,14 +6,28 @@
 
 <body style="@ViewBag.colorFondo;">
     <section class="index">
-        <div id="temporizador">Tiempo restante: <span id="tiempo">10</span> segundos</div>
-        <h1>@ViewBag.Categoria</h1>
-        <div class="centrar">
-            <img src="@ViewBag.direccionImagen" class="preguntas">
-        </div>
-        <p>Nombre: @ViewBag.Nombre</p>
-        <p>Puntaje actual: @ViewBag.Puntaje</p>
-        <p>@ViewBag.preguntaEnunciado</p>
+        @if (ViewBag.Categoria == "Geografía" || ViewBag.Categoria == "Artes" || ViewBag.Categoria == "Entretenimiento" || ViewBag.Categoria == "Deportes")
+        {
+            <div class="index" id="temporizador">Tiempo restante: <span class="index" id="tiempo">10</span> segundos</div>
+            <h1 class="index">@ViewBag.Categoria</h1>
+            <div class="centrar">
+                <img src="@ViewBag.direccionImagen" class="preguntas">
+            </div>
+            <p class="index">Nombre: @ViewBag.Nombre</p>
+            <p class="index">Puntaje actual: @ViewBag.Puntaje</p>
+            <p class="index">@ViewBag.preguntaEnunciado</p>
+        }
+        else
+        {
+            <p id="temporizador">Tiempo restante: <span id="tiempo">10</span> segundos</p>
+            <h1>@ViewBag.Categoria</h1>
+            <div class="centrar">
+                <img src="@ViewBag.direccionImagen" class="preguntas">
+            </div>
+            <p>Nombre: @ViewBag.Nombre</p>
+            <p>Puntaje actual: @ViewBag.Puntaje</p>
+            <p>@ViewBag.preguntaEnunciado</p>
+        }
         <div class="tarjetaPregunta">
             <form class="formpregunta" id="respuestaForm">
                 @foreach (Respuestas r in @ViewBag.opciones)

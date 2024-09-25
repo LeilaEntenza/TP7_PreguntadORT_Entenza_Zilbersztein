@@ -62,7 +62,7 @@ function enviarResultado(nivelElegido, modoDeJuego) {
 
 
 
-let tiempoRestante = 3;
+let tiempoRestante = 10;
 let temporizador;
 
 // Iniciar el temporizador solo en la página específica
