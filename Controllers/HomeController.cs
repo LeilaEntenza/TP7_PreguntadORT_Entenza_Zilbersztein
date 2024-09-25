@@ -171,6 +171,11 @@ public class HomeController : Controller
     {
         return View("Tutorial");
     }
+
+        public IActionResult Respuestas()
+    {
+        return View("Respuesta");
+    }
     public IActionResult VistaFinRacha()
     {
         ViewBag.racha = Juego.TraerPuntaje();
