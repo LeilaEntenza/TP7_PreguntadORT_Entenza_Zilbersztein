@@ -39,7 +39,6 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult RecibirCategoria(int categoriaElegida, int dificultadElegida, int modoElegido)
     {
-        categoriaElegida = 5;
         Juego.GuardarModo(modoElegido);
         Juego.GuardarCategoria(categoriaElegida);
         Juego.GuardarDificultad(dificultadElegida);
